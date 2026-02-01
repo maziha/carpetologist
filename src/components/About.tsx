@@ -1,109 +1,150 @@
-import { useScrollReveal } from '../hooks/useScrollReveal';
+import { motion } from 'framer-motion';
 import { Sparkles, HandMetal, Award } from 'lucide-react';
 
-export const About = () => {
-  const section1 = useScrollReveal(0.2);
-  const section2 = useScrollReveal(0.2);
-  const section3 = useScrollReveal(0.2);
+// Import local image for About section
+import aboutImg from '../assets/images/IMG_20260201_151203.jpg';
+
+interface AboutProps {
+  hideHeader?: boolean;
+}
+
+export const About = ({ hideHeader = false }: AboutProps) => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" } // Fixed previous lint error: ease string type
+    }
+  };
 
   const features = [
     {
       icon: Sparkles,
       title: 'Authentic Heritage',
-      description:
-        'Every carpet tells a story of Turkish craftsmanship passed down through generations.',
+      description: 'Every carpet tells a story of Turkish craftsmanship passed down through generations.',
     },
     {
       icon: HandMetal,
-      title: 'Handwoven Mastery',
-      description:
-        'Meticulously crafted by skilled artisans using time-honored techniques and natural materials.',
+      title: 'Global Collections',
+      description: 'Meticulously sourced from skilled artisans using time-honored techniques and natural materials.',
     },
     {
       icon: Award,
       title: 'Luxury Design',
-      description:
-        'Curated collections that elevate interiors with timeless elegance and artistic expression.',
+      description: 'Curated collections that elevate interiors with timeless elegance and artistic expression.',
     },
   ];
 
   return (
-    <section id="about" className="relative bg-neutral-50 py-32">
+    <section id="about" className="relative bg-white py-40 overflow-hidden">
+      {/* Background Decorative Element */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-amber-500/5 blur-[120px] -z-10" />
+
       <div className="max-w-7xl mx-auto px-6">
-        <div
-          ref={section1.ref}
-          className={`text-center mb-24 transition-all duration-1000 ${
-            section1.isVisible
-              ? 'opacity-100 translate-y-0'
-              : 'opacity-0 translate-y-12'
-          }`}
-        >
-          <h2 className="text-5xl md:text-6xl font-serif text-neutral-900 mb-6">
-            The Art of Carpetology
-          </h2>
-          <div className="h-px w-24 mx-auto bg-gradient-to-r from-transparent via-amber-600 to-transparent mb-8" />
-          <p className="text-lg md:text-xl text-neutral-600 max-w-3xl mx-auto leading-relaxed">
-            At Carpetologist, we believe that a carpet is more than a floor covering—it is a
-            canvas of culture, a testament to artistry, and a bridge between heritage and
-            contemporary living.
-          </p>
+        {!hideHeader && (
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+            className="text-center mb-32"
+          >
+            <p className="text-[10px] tracking-[0.6em] text-amber-600 uppercase mb-6">Discovery</p>
+            <h2 className="text-6xl md:text-7xl font-serif text-neutral-900 mb-10 italic tracking-tight">
+              Art of Carpetology
+            </h2>
+            <div className="h-px w-24 mx-auto bg-gradient-to-r from-transparent via-amber-600/30 to-transparent mb-10" />
+            <p className="text-lg md:text-xl text-neutral-600 max-w-3xl mx-auto leading-[1.8] font-light font-sans">
+              At Carpetologist, we believe that a carpet is more than a floor covering—it is a
+              canvas of culture, a testament to artistry, and a bridge between heritage and
+              contemporary living.
+            </p>
+          </motion.div>
+        )}
+
+        <div className="grid md:grid-cols-2 gap-32 items-center mb-48">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2 }}
+            className="relative"
+          >
+            <div className="relative h-[700px] overflow-hidden">
+              <img
+                src={aboutImg}
+                alt="Carpet detail"
+                className="w-full h-full object-cover grayscale-[0.3] hover:grayscale-0 transition-all duration-1000"
+              />
+              <div className="absolute inset-0 bg-neutral-900/5" />
+            </div>
+            {/* Artistic border overlay */}
+            <div className="absolute -inset-4 border border-amber-600/20 translate-x-8 translate-y-8 -z-10" />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.3 }}
+            className="space-y-12"
+          >
+            <h3 className="text-5xl font-serif text-neutral-900 italic tracking-tight">Our Philosophy</h3>
+            <div className="space-y-8 text-neutral-600 font-light font-sans leading-[1.9] text-lg">
+              <p>
+                Founded on a passion for preserving traditional weaving arts while embracing modern
+                design sensibilities, Carpetologist sources the finest materials and partners with
+                master weavers across Turkey.
+              </p>
+              <p>
+                Each piece in our collection represents months of dedicated craftsmanship, where
+                natural fibers, organic dyes, and intricate patterns come together to create
+                functional art.
+              </p>
+              <div className="pt-8">
+                <button className="group relative px-10 py-5 overflow-hidden">
+                  <span className="relative z-10 text-[10px] tracking-[0.4em] uppercase text-neutral-900 transition-colors duration-500 group-hover:text-white">Request Private Selection</span>
+                  <div className="absolute inset-0 border border-neutral-900/20 group-hover:bg-neutral-900 transition-all duration-500" />
+                </button>
+              </div>
+            </div>
+          </motion.div>
         </div>
 
-        <div
-          ref={section2.ref}
-          className={`grid md:grid-cols-2 gap-16 items-center mb-32 transition-all duration-1000 delay-300 ${
-            section2.isVisible
-              ? 'opacity-100 translate-y-0'
-              : 'opacity-0 translate-y-12'
-          }`}
-        >
-          <div className="relative h-96 md:h-[600px] overflow-hidden rounded-sm shadow-2xl">
-            <img
-              src="https://images.pexels.com/photos/7534565/pexels-photo-7534565.jpeg?auto=compress&cs=tinysrgb&w=800"
-              alt="Handwoven carpet detail"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="space-y-6">
-            <h3 className="text-4xl font-serif text-neutral-900">Our Philosophy</h3>
-            <p className="text-neutral-700 leading-relaxed text-lg">
-              Founded on a passion for preserving traditional weaving arts while embracing modern
-              design sensibilities, Carpetologist sources the finest materials and partners with
-              master weavers across Turkey and beyond.
-            </p>
-            <p className="text-neutral-700 leading-relaxed text-lg">
-              Each piece in our collection represents months of dedicated craftsmanship, where
-              natural fibers, organic dyes, and intricate patterns come together to create
-              functional art that enriches your living spaces.
-            </p>
-            <p className="text-neutral-700 leading-relaxed text-lg">
-              We curate only what speaks to us—carpets with soul, character, and the power to
-              transform a room into a sanctuary of warmth and beauty.
-            </p>
-          </div>
-        </div>
-
-        <div
-          ref={section3.ref}
-          className={`grid md:grid-cols-3 gap-12 transition-all duration-1000 delay-500 ${
-            section3.isVisible
-              ? 'opacity-100 translate-y-0'
-              : 'opacity-0 translate-y-12'
-          }`}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid md:grid-cols-3 gap-8"
         >
           {features.map((feature, index) => (
-            <div
+            <motion.div
               key={index}
-              className="text-center space-y-4 p-8 bg-white rounded-sm shadow-lg hover:shadow-xl transition-shadow"
+              variants={itemVariants}
+              className="group p-12 bg-stone-50 border border-stone-100 backdrop-blur-sm hover:bg-white hover:border-amber-200 transition-all duration-700 shadow-sm"
             >
-              <div className="flex justify-center">
-                <feature.icon className="w-12 h-12 text-amber-700" strokeWidth={1.5} />
+              <div className="mb-8 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700">
+                <feature.icon className="w-12 h-12 text-amber-600" strokeWidth={1} />
               </div>
-              <h4 className="text-2xl font-serif text-neutral-900">{feature.title}</h4>
-              <p className="text-neutral-600 leading-relaxed">{feature.description}</p>
-            </div>
+              <h4 className="text-2xl font-serif text-neutral-900 italic mb-4 tracking-tight">{feature.title}</h4>
+              <p className="text-neutral-500 group-hover:text-neutral-600 font-light font-sans text-sm leading-relaxed transition-colors duration-500">
+                {feature.description}
+              </p>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

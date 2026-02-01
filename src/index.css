@@ -5,12 +5,19 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    cursor: none; /* Globally hide the default cursor */
   }
 
   body {
     font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    cursor: none; /* Ensure body also hides it */
+  }
+
+  /* Ensure interactive elements also inherit the hidden cursor so the custom one takes precedence */
+  a, button, input, select, textarea {
+    cursor: none;
   }
 
   h1, h2, h3, h4, h5, h6 {

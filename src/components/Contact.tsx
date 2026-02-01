@@ -1,12 +1,16 @@
-import { useState, FormEvent } from 'react';
-import { useScrollReveal } from '../hooks/useScrollReveal';
-import { Send, Mail, MapPin, Phone } from 'lucide-react';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Mail, MapPin, Phone, MessageCircle } from 'lucide-react';
 
-export const Contact = () => {
-  const header = useScrollReveal(0.2);
-  const form = useScrollReveal(0.2);
-  const info = useScrollReveal(0.2);
+interface ContactProps {
+  hideHeader?: boolean;
+}
 
+// Update these with your actual details
+const BUSINESS_EMAIL = 'kmstraders25@gmail.com';
+const WHATSAPP_NUMBER = '917558077632'; // Format: country code + number, no +
+
+export const Contact = ({ hideHeader = false }: ContactProps) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -15,117 +19,145 @@ export const Contact = () => {
     message: '',
   });
 
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: '', email: '', phone: '', interest: '', message: '' });
-    }, 3000);
-  };
-
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const generateEmailContent = () => {
+    const subject = `Enquiry from ${formData.name} - ${formData.interest || 'General'}`;
+    const body = `Hello Carpetologist Team,
+
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone || 'Not provided'}
+Area of Interest: ${formData.interest || 'Not specified'}
+
+Message:
+${formData.message}
+
+---
+Sent from carpetologist.com contact form
+`;
+    return { subject, body };
+  };
+
+  const handleEmailClick = () => {
+    const { subject, body } = generateEmailContent();
+    const mailtoLink = `mailto:${BUSINESS_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.open(mailtoLink, '_blank');
+  };
+
+  const handleWhatsAppClick = () => {
+    const { subject, body } = generateEmailContent();
+    const whatsappMessage = `*${subject}*\n\n${body}`;
+    const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
+    window.open(whatsappLink, '_blank');
+  };
+
+  const isFormValid = formData.name && formData.email && formData.message;
+
   return (
-    <section id="contact" className="relative bg-stone-50 py-32">
+    <section id="contact" className="relative bg-white py-40">
       <div className="max-w-7xl mx-auto px-6">
-        <div
-          ref={header.ref}
-          className={`text-center mb-24 transition-all duration-1000 ${
-            header.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-          }`}
-        >
-          <h2 className="text-5xl md:text-6xl font-serif text-neutral-900 mb-6">Get In Touch</h2>
-          <div className="h-px w-24 mx-auto bg-gradient-to-r from-transparent via-amber-600 to-transparent mb-8" />
-          <p className="text-lg md:text-xl text-neutral-600 max-w-3xl mx-auto leading-relaxed">
-            Have questions about our collections? Interested in visiting our showroom? We'd love
-            to hear from you.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-16">
-          <div
-            ref={form.ref}
-            className={`transition-all duration-1000 ${
-              form.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'
-            }`}
+        {!hideHeader && (
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+            className="text-center mb-24"
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm text-neutral-700 mb-2 tracking-wide">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-white border border-neutral-300 rounded-sm focus:outline-none focus:border-amber-600 transition-colors"
-                />
+            <p className="text-[10px] tracking-[0.6em] text-amber-600 uppercase mb-6">
+              Connect
+            </p>
+            <h2 className="text-6xl md:text-7xl font-serif text-neutral-900 mb-8 italic tracking-tight">Get In Touch</h2>
+            <div className="h-px w-24 mx-auto bg-gradient-to-r from-transparent via-amber-600 to-transparent mb-8" />
+            <p className="text-base md:text-lg text-neutral-600 max-w-2xl mx-auto leading-relaxed font-light font-sans">
+              Interested in our collections or visiting our showroom? We'd love to hear from you.
+            </p>
+          </motion.div>
+        )}
+
+        <div className="grid md:grid-cols-2 gap-24">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+          >
+            <div className="space-y-10 bg-stone-50 p-12 border border-stone-100 shadow-sm relative group">
+              <div className="absolute top-0 right-0 p-8">
+                <span className="text-[8px] tracking-[0.5em] text-amber-600/40 uppercase">Enquiry Form</span>
               </div>
 
-              <div>
-                <label htmlFor="email" className="block text-sm text-neutral-700 mb-2 tracking-wide">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-white border border-neutral-300 rounded-sm focus:outline-none focus:border-amber-600 transition-colors"
-                />
+              <div className="grid grid-cols-2 gap-8 pt-8">
+                <div className="space-y-4">
+                  <label htmlFor="name" className="block text-[10px] text-amber-600 uppercase tracking-[0.3em]">
+                    Full Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-0 py-3 bg-transparent border-b border-stone-200 text-neutral-900 focus:outline-none focus:border-amber-600 transition-colors font-light font-sans"
+                  />
+                </div>
+
+                <div className="space-y-4">
+                  <label htmlFor="email" className="block text-[10px] text-amber-600 uppercase tracking-[0.3em]">
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-0 py-3 bg-transparent border-b border-stone-200 text-neutral-900 focus:outline-none focus:border-amber-600 transition-colors font-light font-sans"
+                  />
+                </div>
               </div>
 
-              <div>
-                <label htmlFor="phone" className="block text-sm text-neutral-700 mb-2 tracking-wide">
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-white border border-neutral-300 rounded-sm focus:outline-none focus:border-amber-600 transition-colors"
-                />
+              <div className="grid grid-cols-2 gap-8">
+                <div className="space-y-4">
+                  <label htmlFor="phone" className="block text-[10px] text-amber-600 uppercase tracking-[0.3em]">
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="w-full px-0 py-3 bg-transparent border-b border-stone-200 text-neutral-900 focus:outline-none focus:border-amber-600 transition-colors font-light font-sans"
+                  />
+                </div>
+
+                <div className="space-y-4">
+                  <label htmlFor="interest" className="block text-[10px] text-amber-600 uppercase tracking-[0.3em]">
+                    Area of Interest
+                  </label>
+                  <input
+                    type="text"
+                    id="interest"
+                    name="interest"
+                    value={formData.interest}
+                    onChange={handleChange}
+                    placeholder="e.g., Persian Carpets, Artificial Grass..."
+                    className="w-full px-0 py-3 bg-transparent border-b border-stone-200 text-neutral-900 focus:outline-none focus:border-amber-600 transition-colors font-light font-sans placeholder:text-neutral-400 placeholder:text-sm"
+                  />
+                </div>
               </div>
 
-              <div>
-                <label htmlFor="interest" className="block text-sm text-neutral-700 mb-2 tracking-wide">
-                  Area of Interest
-                </label>
-                <select
-                  id="interest"
-                  name="interest"
-                  value={formData.interest}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-white border border-neutral-300 rounded-sm focus:outline-none focus:border-amber-600 transition-colors"
-                >
-                  <option value="">Select a collection</option>
-                  <option value="turkish">Turkish Carpets</option>
-                  <option value="handwoven">Handwoven Carpets</option>
-                  <option value="luxury">Designer & Luxury</option>
-                  <option value="vintage">Vintage & Antique</option>
-                  <option value="showroom">Showroom Visit</option>
-                  <option value="other">Other Inquiry</option>
-                </select>
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm text-neutral-700 mb-2 tracking-wide">
-                  Message
+              <div className="space-y-4">
+                <label htmlFor="message" className="block text-[10px] text-amber-600 uppercase tracking-[0.3em]">
+                  Message *
                 </label>
                 <textarea
                   id="message"
@@ -133,92 +165,109 @@ export const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  rows={5}
-                  className="w-full px-4 py-3 bg-white border border-neutral-300 rounded-sm focus:outline-none focus:border-amber-600 transition-colors resize-none"
+                  rows={4}
+                  placeholder="Tell us about your requirements..."
+                  className="w-full px-0 py-3 bg-transparent border-b border-stone-200 text-neutral-900 focus:outline-none focus:border-amber-600 transition-colors resize-none font-light font-sans placeholder:text-neutral-400 placeholder:text-sm"
                 />
               </div>
 
-              <button
-                type="submit"
-                disabled={isSubmitted}
-                className="w-full bg-amber-700 hover:bg-amber-800 text-white py-4 rounded-sm transition-colors flex items-center justify-center gap-2 tracking-wider uppercase text-sm disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isSubmitted ? (
-                  'Message Sent!'
-                ) : (
-                  <>
-                    <Send size={18} />
-                    Send Enquiry
-                  </>
-                )}
-              </button>
-            </form>
-          </div>
+              {/* Action Buttons */}
+              <div className="grid grid-cols-2 gap-4 pt-4">
+                <button
+                  onClick={handleEmailClick}
+                  disabled={!isFormValid}
+                  className={`group relative h-16 overflow-hidden transition-all duration-500 flex items-center justify-center gap-3 ${isFormValid
+                    ? 'bg-neutral-900 hover:bg-amber-600 cursor-pointer'
+                    : 'bg-neutral-300 cursor-not-allowed'
+                    }`}
+                >
+                  <Mail size={16} className="text-white" />
+                  <span className="text-[9px] tracking-[0.3em] uppercase text-white">
+                    Send via Email
+                  </span>
+                </button>
 
-          <div
-            ref={info.ref}
-            className={`transition-all duration-1000 delay-300 ${
-              info.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'
-            }`}
+                <button
+                  onClick={handleWhatsAppClick}
+                  disabled={!isFormValid}
+                  className={`group relative h-16 overflow-hidden transition-all duration-500 flex items-center justify-center gap-3 ${isFormValid
+                    ? 'bg-green-600 hover:bg-green-700 cursor-pointer'
+                    : 'bg-neutral-300 cursor-not-allowed'
+                    }`}
+                >
+                  <MessageCircle size={16} className="text-white" />
+                  <span className="text-[9px] tracking-[0.3em] uppercase text-white">
+                    Send via WhatsApp
+                  </span>
+                </button>
+              </div>
+
+              <p className="text-[10px] text-neutral-400 text-center pt-2">
+                Click a button to open your email client or WhatsApp with the message ready to send.
+              </p>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.3 }}
+            className="space-y-16 flex flex-col justify-center"
           >
-            <div className="space-y-8">
-              <div className="bg-white p-8 rounded-sm shadow-lg">
-                <h3 className="text-2xl font-serif text-neutral-900 mb-8">Contact Information</h3>
+            <div className="space-y-12">
+              <h3 className="text-4xl font-serif text-neutral-900 italic tracking-tight">Visit The Atelier</h3>
 
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <MapPin className="w-6 h-6 text-amber-700 flex-shrink-0 mt-1" />
-                    <div>
-                      <p className="text-neutral-900 font-medium mb-1">Showroom Address</p>
-                      <p className="text-neutral-600 leading-relaxed">
-                        123 Heritage Lane
-                        <br />
-                        Design District, City Center
-                        <br />
-                        Postal Code
-                      </p>
-                    </div>
+              <div className="space-y-10">
+                <div className="flex items-start gap-8 group">
+                  <div className="w-12 h-12 rounded-full border border-stone-100 flex items-center justify-center group-hover:border-amber-600/30 transition-colors duration-500">
+                    <MapPin className="w-5 h-5 text-amber-600" strokeWidth={1} />
                   </div>
-
-                  <div className="flex items-start gap-4">
-                    <Phone className="w-6 h-6 text-amber-700 flex-shrink-0 mt-1" />
-                    <div>
-                      <p className="text-neutral-900 font-medium mb-1">Phone</p>
-                      <p className="text-neutral-600">+1 (555) 123-4567</p>
-                    </div>
+                  <div className="space-y-2">
+                    <p className="text-[10px] text-amber-600 uppercase tracking-[0.3em] font-medium">Headquarters</p>
+                    <p className="text-sm text-neutral-600 leading-relaxed font-light font-sans">
+                      123 Heritage Lane, Design District<br />
+                      Postal Code, City Center
+                    </p>
                   </div>
+                </div>
 
-                  <div className="flex items-start gap-4">
-                    <Mail className="w-6 h-6 text-amber-700 flex-shrink-0 mt-1" />
-                    <div>
-                      <p className="text-neutral-900 font-medium mb-1">Email</p>
-                      <p className="text-neutral-600">info@carpetologist.com</p>
-                    </div>
+                <div className="flex items-start gap-8 group">
+                  <div className="w-12 h-12 rounded-full border border-stone-100 flex items-center justify-center group-hover:border-amber-600/30 transition-colors duration-500">
+                    <Phone className="w-5 h-5 text-amber-600" strokeWidth={1} />
+                  </div>
+                  <div className="space-y-2">
+                    <p className="text-[10px] text-amber-600 uppercase tracking-[0.3em] font-medium">Concierge</p>
+                    <p className="text-sm text-neutral-600 font-light font-sans">+1 (555) 123-4567</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-8 group">
+                  <div className="w-12 h-12 rounded-full border border-stone-100 flex items-center justify-center group-hover:border-amber-600/30 transition-colors duration-500">
+                    <Mail className="w-5 h-5 text-amber-600" strokeWidth={1} />
+                  </div>
+                  <div className="space-y-2">
+                    <p className="text-[10px] text-amber-600 uppercase tracking-[0.3em] font-medium">Enquiries</p>
+                    <p className="text-sm text-neutral-600 font-light font-sans uppercase">kmstraders25@gmail.com</p>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-amber-100 p-8 rounded-sm border border-amber-200">
-                <h4 className="text-xl font-serif text-neutral-900 mb-4">Schedule a Private Viewing</h4>
-                <p className="text-neutral-700 leading-relaxed mb-4">
-                  For a more personalized experience, schedule a private viewing where our experts
-                  can provide dedicated attention to your specific needs and preferences.
-                </p>
-                <p className="text-neutral-700 leading-relaxed">
-                  Please mention your preferred date and time in the message above, and we'll
-                  confirm your appointment.
-                </p>
-              </div>
-
-              <div className="relative h-64 overflow-hidden rounded-sm shadow-lg">
-                <img
-                  src="https://images.pexels.com/photos/6045093/pexels-photo-6045093.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  alt="Carpetologist showroom"
-                  className="w-full h-full object-cover"
-                />
+              {/* Map Section - Integrated directly into Contact component */}
+              <div className="h-64 w-full overflow-hidden border border-stone-200 mt-8 relative group">
+                <div className="absolute inset-0 bg-stone-50 z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none" />
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15717.334860997988!2d76.5702279557532!3d9.989268241847988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b07e7005d68f86b%3A0xb80a03309c1f26b3!2sCarpetologist!5e0!3m2!1sen!2sin!4v1769933453667!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen={true}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

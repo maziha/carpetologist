@@ -1,6 +1,12 @@
 import { useState } from 'react';
-import { useScrollReveal } from '../hooks/useScrollReveal';
-import { ArrowRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
+
+// Import local images from assets/images
+import turkishImg from '../assets/images/IMG_20260201_151239.jpg';
+import persianImg from '../assets/images/IMG_20260201_151148.jpg';
+import indianImg from '../assets/images/IMG_20260201_151048.jpg';
+import designerImg from '../assets/images/IMG_20260201_150917.jpg';
 
 interface Collection {
   id: string;
@@ -8,125 +14,154 @@ interface Collection {
   subtitle: string;
   description: string;
   image: string;
+  routeCategory: string; // Add route parameter for filtered gallery
 }
 
-export const Collections = () => {
-  const header = useScrollReveal(0.2);
+interface CollectionsProps {
+  hideHeader?: boolean;
+}
+
+export const Collections = ({ hideHeader = false }: CollectionsProps) => {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const collections: Collection[] = [
     {
       id: 'turkish',
-      title: 'Turkish Carpets',
-      subtitle: 'Authentic Anatolian Heritage',
+      title: 'Turkish',
+      subtitle: 'Anatolian Tradition',
       description:
-        'Explore carpets woven in the heart of Turkey, featuring traditional motifs, vibrant natural dyes, and centuries-old patterns that capture the essence of Anatolian culture.',
-      image: 'https://images.pexels.com/photos/6045072/pexels-photo-6045072.jpeg?auto=compress&cs=tinysrgb&w=800',
+        'Carpets from the heart of Turkey, featuring traditional motifs and natural dyes.',
+      image: turkishImg,
+      routeCategory: 'Turkish',
     },
     {
-      id: 'handwoven',
-      title: 'Handwoven Carpets',
-      subtitle: 'Artisan Craftsmanship',
+      id: 'persian',
+      title: 'Persian',
+      subtitle: 'Imperial Craft',
       description:
-        'Each piece is a labor of love, handwoven by master artisans using techniques passed down through generations. These carpets embody patience, skill, and artistic devotion.',
-      image: 'https://images.pexels.com/photos/4857782/pexels-photo-4857782.jpeg?auto=compress&cs=tinysrgb&w=800',
+        'Intricate designs and masterful weaving techniques from the cradle of carpet making.',
+      image: persianImg,
+      routeCategory: 'Persian'
     },
     {
-      id: 'luxury',
-      title: 'Designer & Luxury',
-      subtitle: 'Contemporary Elegance',
+      id: 'indian',
+      title: 'Indian',
+      subtitle: 'Vibrant Heritage',
       description:
-        'Our luxury collection merges traditional craftsmanship with modern aesthetics. Featuring bespoke designs, premium materials, and innovative patterns for discerning interiors.',
-      image: 'https://images.pexels.com/photos/6969901/pexels-photo-6969901.jpeg?auto=compress&cs=tinysrgb&w=800',
+        'A celebration of color and patterns inspired by the rich cultural tapestry of India.',
+      image: indianImg,
+      routeCategory: 'Indian'
     },
     {
-      id: 'vintage',
-      title: 'Vintage & Antique',
-      subtitle: 'Timeless Treasures',
+      id: 'designer',
+      title: 'Designer',
+      subtitle: 'Modern Luxury',
       description:
-        'Carefully sourced vintage and antique pieces that carry stories from the past. Each carpet is a unique artifact with character, patina, and historical significance.',
-      image: 'https://images.pexels.com/photos/7195299/pexels-photo-7195299.jpeg?auto=compress&cs=tinysrgb&w=800',
+        'Contemporary masterpieces that blend traditional quality with modern aesthetics.',
+      image: designerImg,
+      routeCategory: 'Designer'
     },
   ];
 
+  const handleExplore = (category: string) => {
+    // Navigate to gallery with state or query param. For simplicity let's use state if GalleryPage supported it, or just hash/search.
+    // Since GalleryPage uses local state for activeCategory, passing state via navigation is cleanest.
+    navigate('/gallery', { state: { category } });
+  };
+
   return (
-    <section id="collections" className="relative bg-neutral-900 py-32">
+    <section className="relative bg-neutral-900 py-32">
       <div className="max-w-7xl mx-auto px-6">
-        <div
-          ref={header.ref}
-          className={`text-center mb-24 transition-all duration-1000 ${
-            header.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-          }`}
-        >
-          <h2 className="text-5xl md:text-6xl font-serif text-amber-50 mb-6">
-            Our Collections
-          </h2>
-          <div className="h-px w-24 mx-auto bg-gradient-to-r from-transparent via-amber-600 to-transparent mb-8" />
-          <p className="text-lg md:text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed">
-            Discover curated galleries of exquisite carpets, each collection representing a
-            unique intersection of heritage, artistry, and design excellence.
-          </p>
-        </div>
+        {!hideHeader && (
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+            className="text-center mb-24"
+          >
+            <p className="text-[10px] tracking-[0.5em] text-amber-500 uppercase mb-4">
+              Curated Selection
+            </p>
+            <h2 className="text-6xl md:text-7xl font-serif text-white mb-8 italic tracking-tight">
+              The Legacy
+            </h2>
+            <div className="h-px w-24 mx-auto bg-white/10 mb-8" />
+          </motion.div>
+        )}
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {collections.map((collection, index) => {
-            const reveal = useScrollReveal(0.2);
-            return (
-              <div
-                key={collection.id}
-                ref={reveal.ref}
-                className={`relative overflow-hidden rounded-sm shadow-2xl transition-all duration-1000 ${
-                  reveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-                }`}
-                style={{ transitionDelay: `${index * 150}ms` }}
-                onMouseEnter={() => setHoveredId(collection.id)}
-                onMouseLeave={() => setHoveredId(null)}
-              >
-                <div className="relative h-96 md:h-[500px]">
-                  <img
-                    src={collection.image}
-                    alt={collection.title}
-                    className={`w-full h-full object-cover transition-transform duration-700 ${
-                      hoveredId === collection.id ? 'scale-110' : 'scale-100'
-                    }`}
-                  />
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-t from-neutral-900 via-neutral-900/60 to-transparent transition-opacity duration-500 ${
-                      hoveredId === collection.id ? 'opacity-90' : 'opacity-70'
-                    }`}
-                  />
-                </div>
-
-                <div className="absolute bottom-0 left-0 right-0 p-8 space-y-4">
-                  <p className="text-sm tracking-widest text-amber-400 uppercase">
-                    {collection.subtitle}
-                  </p>
-                  <h3 className="text-3xl md:text-4xl font-serif text-amber-50">
-                    {collection.title}
-                  </h3>
-                  <p
-                    className={`text-neutral-300 leading-relaxed transition-all duration-500 ${
-                      hoveredId === collection.id
-                        ? 'opacity-100 translate-y-0'
-                        : 'opacity-0 translate-y-4'
-                    }`}
-                  >
-                    {collection.description}
-                  </p>
-                  <button
-                    className={`flex items-center gap-2 text-amber-400 hover:text-amber-300 transition-all duration-300 ${
-                      hoveredId === collection.id
-                        ? 'opacity-100 translate-x-0'
-                        : 'opacity-0 -translate-x-4'
-                    }`}
-                  >
-                    <span className="tracking-wider uppercase text-sm">Explore Collection</span>
-                    <ArrowRight size={18} />
-                  </button>
-                </div>
+        <div className="grid md:grid-cols-2 gap-12">
+          {collections.map((collection, index) => (
+            <motion.div
+              key={collection.id}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+              className="relative overflow-hidden group shadow-2xl rounded-none cursor-pointer"
+              onMouseEnter={() => setHoveredId(collection.id)}
+              onMouseLeave={() => setHoveredId(null)}
+              onClick={() => handleExplore(collection.routeCategory)}
+            >
+              <div className="relative h-96 md:h-[650px] overflow-hidden">
+                <motion.img
+                  src={collection.image}
+                  alt={collection.title}
+                  animate={{ scale: hoveredId === collection.id ? 1.05 : 1 }}
+                  transition={{ duration: 1.5, ease: [0.33, 1, 0.68, 1] }}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-neutral-950/40 group-hover:bg-neutral-950/60 transition-all duration-700" />
+                <div className="absolute inset-0 border border-white/5 m-4" />
               </div>
-            );
-          })}
+
+              <div className="absolute bottom-0 left-0 right-0 p-12 space-y-6">
+                <motion.p
+                  animate={{ y: hoveredId === collection.id ? 0 : 5, opacity: hoveredId === collection.id ? 1 : 0.7 }}
+                  className="text-[10px] tracking-[0.4em] text-amber-400 uppercase font-sans"
+                >
+                  {collection.subtitle}
+                </motion.p>
+                <h3 className="text-4xl font-serif text-white italic tracking-tight">
+                  {collection.title}
+                </h3>
+
+                <AnimatePresence>
+                  {hoveredId === collection.id && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0, y: 10 }}
+                      animate={{ opacity: 1, height: 'auto', y: 0 }}
+                      exit={{ opacity: 0, height: 0, y: 10 }}
+                      transition={{ duration: 0.5, ease: "easeOut" }}
+                      className="overflow-hidden"
+                    >
+                      <p className="text-sm text-neutral-400 leading-relaxed font-light font-sans mb-8">
+                        {collection.description}
+                      </p>
+                      <button
+                        className="flex items-center gap-6 text-white group/btn"
+                        onClick={(e) => {
+                          e.stopPropagation(); // prevent double clicking if parent is clickable
+                          handleExplore(collection.routeCategory)
+                        }}
+                      >
+                        <span className="tracking-[0.4em] uppercase text-[9px]">Explore Gallery</span>
+                        <div className="relative w-12 h-px bg-white/30 overflow-hidden">
+                          <motion.div
+                            initial={{ x: '-100%' }}
+                            animate={{ x: '100%' }}
+                            transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
+                            className="absolute inset-0 bg-amber-500"
+                          />
+                        </div>
+                      </button>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
