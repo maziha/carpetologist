@@ -42,7 +42,7 @@ export const SisterOrganizations = ({ hideHeader = false }: SisterOrganizationsP
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1.2, ease: "easeOut" }}
-              className="relative aspect-[4/5] overflow-hidden group shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)]"
+              className="relative aspect-[4/5] overflow-hidden group shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] rounded-2xl"
             >
               <img
                 src={horizonImg}
@@ -107,7 +107,7 @@ export const SisterOrganizations = ({ hideHeader = false }: SisterOrganizationsP
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1.2, ease: "easeOut" }}
-              className="relative aspect-[4/5] overflow-hidden group shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] order-1 md:order-2"
+              className="relative aspect-[4/5] overflow-hidden group shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] order-1 md:order-2 rounded-2xl"
             >
               <img
                 src={kmsImg}

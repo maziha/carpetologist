@@ -24,7 +24,7 @@ export const About = ({ hideHeader = false }: AboutProps) => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: "easeOut" } // Fixed previous lint error: ease string type
+      transition: { duration: 0.8 }
     }
   };
 
@@ -81,7 +81,7 @@ export const About = ({ hideHeader = false }: AboutProps) => {
             transition={{ duration: 1.2 }}
             className="relative"
           >
-            <div className="relative h-[700px] overflow-hidden">
+            <div className="relative h-[700px] overflow-hidden rounded-2xl">
               <img
                 src={aboutImg}
                 alt="Carpet detail"
@@ -90,7 +90,7 @@ export const About = ({ hideHeader = false }: AboutProps) => {
               <div className="absolute inset-0 bg-neutral-900/5" />
             </div>
             {/* Artistic border overlay */}
-            <div className="absolute -inset-4 border border-amber-600/20 translate-x-8 translate-y-8 -z-10" />
+            <div className="absolute -inset-4 border border-amber-600/20 translate-x-8 translate-y-8 -z-10 rounded-2xl" />
           </motion.div>
 
           <motion.div

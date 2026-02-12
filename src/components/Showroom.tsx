@@ -53,7 +53,7 @@ export const Showroom = ({ hideHeader = false }: ShowroomProps) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="relative h-[450px] shadow-2xl overflow-hidden mt-20"
+              className="relative h-[450px] shadow-2xl overflow-hidden mt-20 rounded-2xl"
             >
               <img
                 src={showroom1}
@@ -66,7 +66,7 @@ export const Showroom = ({ hideHeader = false }: ShowroomProps) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative h-[450px] shadow-2xl overflow-hidden"
+              className="relative h-[450px] shadow-2xl overflow-hidden rounded-2xl"
             >
               <img
                 src={showroom2}

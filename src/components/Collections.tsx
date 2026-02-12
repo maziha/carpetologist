@@ -99,7 +99,7 @@ export const Collections = ({ hideHeader = false }: CollectionsProps) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="relative overflow-hidden group shadow-2xl rounded-none cursor-pointer"
+              className="relative overflow-hidden group shadow-2xl rounded-2xl cursor-pointer"
               onMouseEnter={() => setHoveredId(collection.id)}
               onMouseLeave={() => setHoveredId(null)}
               onClick={() => handleExplore(collection.routeCategory)}
@@ -113,7 +113,7 @@ export const Collections = ({ hideHeader = false }: CollectionsProps) => {
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-neutral-950/40 group-hover:bg-neutral-950/60 transition-all duration-700" />
-                <div className="absolute inset-0 border border-white/5 m-4" />
+                <div className="absolute inset-0 border border-white/5 m-4 rounded-2xl" />
               </div>
 
               <div className="absolute bottom-0 left-0 right-0 p-12 space-y-6">

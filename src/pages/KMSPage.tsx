@@ -66,7 +66,7 @@ export const KMSPage = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: i * 0.1 }}
-                                className="group bg-white p-12 hover:shadow-2xl transition-all duration-500 cursor-pointer border border-stone-200"
+                                className="group bg-white p-12 hover:shadow-2xl transition-all duration-500 cursor-pointer border border-stone-200 rounded-2xl"
                             >
                                 <div className="h-full flex flex-col justify-between space-y-8">
                                     <div>

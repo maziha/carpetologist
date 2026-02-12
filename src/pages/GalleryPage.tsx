@@ -123,7 +123,7 @@ export const GalleryPage = () => {
                                     className="break-inside-avoid relative group cursor-pointer"
                                     onClick={() => setSelectedImage(image)}
                                 >
-                                    <div className="relative overflow-hidden bg-neutral-200">
+                                    <div className="relative overflow-hidden bg-neutral-200 rounded-2xl">
                                         <img
                                             src={image.src}
                                             alt={image.title}
@@ -174,7 +174,7 @@ export const GalleryPage = () => {
                                 <img
                                     src={selectedImage.src}
                                     alt={selectedImage.title}
-                                    className="max-h-[75vh] w-auto object-contain shadow-2xl"
+                                    className="max-h-[75vh] w-auto object-contain shadow-2xl rounded-2xl"
                                 />
                                 <div className="mt-8 text-center space-y-2">
                                     <h3 className="text-3xl font-serif italic text-white">{selectedImage.title}</h3>

@@ -1,4 +1,3 @@
-import React from 'react';
 import { SisterOrganizations } from '../components/SisterOrganizations';
 import { PageTransition } from '../components/ui/PageTransition';
 import { motion } from 'framer-motion';
@@ -33,7 +32,7 @@ export const SisterBrandsPage = () => {
                                     initial={{ opacity: 0, scale: 0.9 }}
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     viewport={{ once: true }}
-                                    className="h-48 rounded-none border border-white/5 overflow-hidden"
+                                    className="h-48 rounded-2xl border border-white/5 overflow-hidden"
                                 >
                                     <img
                                         src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800"
@@ -46,7 +45,7 @@ export const SisterBrandsPage = () => {
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: 0.2 }}
-                                    className="h-72 rounded-none border border-white/5 overflow-hidden"
+                                    className="h-72 rounded-2xl border border-white/5 overflow-hidden"
                                 >
                                     <img
                                         src="https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=800"
@@ -61,7 +60,7 @@ export const SisterBrandsPage = () => {
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: 0.1 }}
-                                    className="h-72 rounded-none border border-white/5 overflow-hidden"
+                                    className="h-72 rounded-2xl border border-white/5 overflow-hidden"
                                 >
                                     <img
                                         src="https://images.pexels.com/photos/6045093/pexels-photo-6045093.jpeg?auto=compress&cs=tinysrgb&w=800"
@@ -74,7 +73,7 @@ export const SisterBrandsPage = () => {
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: 0.3 }}
-                                    className="h-48 rounded-none border border-white/5 overflow-hidden"
+                                    className="h-48 rounded-2xl border border-white/5 overflow-hidden"
                                 >
                                     <img
                                         src="https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=800"

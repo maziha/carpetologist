@@ -197,7 +197,7 @@ Sent from Horizon Ventures page
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: index * 0.1 }}
-                                    className="group relative overflow-hidden"
+                                    className="group relative overflow-hidden rounded-2xl"
                                 >
                                     {/* Image with dark overlay backdrop */}
                                     <div className="relative h-[400px] md:h-[500px] overflow-hidden">
@@ -245,7 +245,7 @@ Sent from Horizon Ventures page
                                     </div>
 
                                     {/* Border effect */}
-                                    <div className="absolute inset-0 border-2 border-white/5 group-hover:border-amber-500/30 transition-colors duration-500" />
+                                    <div className="absolute inset-0 border-2 border-white/5 group-hover:border-amber-500/30 transition-colors duration-500 rounded-2xl" />
                                 </motion.div>
                             ))}
                         </div>
@@ -274,10 +274,10 @@ Sent from Horizon Ventures page
                                 initial={{ opacity: 0, x: -30 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
-                                className="group relative overflow-hidden"
+                                className="group relative overflow-hidden rounded-2xl"
                             >
                                 {/* Image */}
-                                <div className="relative h-[300px] overflow-hidden">
+                                <div className="relative h-[300px] overflow-hidden rounded-t-2xl">
                                     <img
                                         src={cushionMatImg}
                                         alt="Cushion Mats"
@@ -330,11 +330,10 @@ Sent from Horizon Ventures page
                                 initial={{ opacity: 0, x: 30 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
-                                className="group relative overflow-hidden"
+                                className="group relative overflow-hidden rounded-2xl"
                             >
                                 {/* Image */}
-                                {/* Image */}
-                                <div className="relative h-[300px] overflow-hidden">
+                                <div className="relative h-[300px] overflow-hidden rounded-t-2xl">
                                     <img
                                         src={sMatImg}
                                         alt="S Mats"

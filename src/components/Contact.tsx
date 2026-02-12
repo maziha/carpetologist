@@ -254,7 +254,7 @@ Sent from carpetologist.com contact form
               </div>
 
               {/* Map Section - Integrated directly into Contact component */}
-              <div className="h-64 w-full overflow-hidden border border-stone-200 mt-8 relative group">
+              <div className="h-64 w-full overflow-hidden border border-stone-200 mt-8 relative group rounded-2xl">
                 <div className="absolute inset-0 bg-stone-50 z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none" />
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15717.334860997988!2d76.5702279557532!3d9.989268241847988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b07e7005d68f86b%3A0xb80a03309c1f26b3!2sCarpetologist!5e0!3m2!1sen!2sin!4v1769933453667!5m2!1sen!2sin"
