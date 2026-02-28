@@ -224,10 +224,10 @@ Sent from carpetologist.com contact form
                     <MapPin className="w-5 h-5 text-amber-600" strokeWidth={1} />
                   </div>
                   <div className="space-y-2">
-                    <p className="text-[10px] text-amber-600 uppercase tracking-[0.3em] font-medium">Headquarters</p>
+                    <p className="text-[10px] text-amber-600 uppercase tracking-[0.3em] font-medium">Showroom</p>
                     <p className="text-sm text-neutral-600 leading-relaxed font-light font-sans">
-                      123 Heritage Lane, Design District<br />
-                      Postal Code, City Center
+                      Muvattupuzha, Ernakulam<br />
+                      Kerala, India
                     </p>
                   </div>
                 </div>
@@ -238,7 +238,7 @@ Sent from carpetologist.com contact form
                   </div>
                   <div className="space-y-2">
                     <p className="text-[10px] text-amber-600 uppercase tracking-[0.3em] font-medium">Concierge</p>
-                    <p className="text-sm text-neutral-600 font-light font-sans">+1 (555) 123-4567</p>
+                    <p className="text-sm text-neutral-600 font-light font-sans">+91 75580 77632</p>
                   </div>
                 </div>
 

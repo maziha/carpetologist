@@ -29,7 +29,7 @@ export const SisterOrganizations = ({ hideHeader = false }: SisterOrganizationsP
               Synergy
             </p>
             <h2 className="text-6xl md:text-7xl font-serif text-neutral-900 mb-10 italic tracking-tight">
-              The Group
+              KMS Traders
             </h2>
             <div className="h-px w-24 mx-auto bg-amber-600/30 mb-8" />
           </motion.div>
@@ -65,7 +65,7 @@ export const SisterOrganizations = ({ hideHeader = false }: SisterOrganizationsP
               transition={{ duration: 1.2, delay: 0.2 }}
               className="space-y-10"
             >
-              <h3 className="text-5xl font-serif text-neutral-900 italic tracking-tighter leading-none">The Landscape <br /> of Tomorrow</h3>
+              <h3 className="text-5xl font-serif text-neutral-900 italic tracking-tighter leading-none">Horizon Ventures</h3>
               <p className="text-neutral-600 leading-[2] font-light text-lg">
                 Horizon Ventures creates evergreen landscapes that defy the elements. Specializing in premium artificial grass solutions, we transform outdoor voids into vibrant, maintenance-free sanctuaries of emerald perfection.
               </p>
@@ -88,7 +88,7 @@ export const SisterOrganizations = ({ hideHeader = false }: SisterOrganizationsP
               transition={{ duration: 1.2, delay: 0.2 }}
               className="space-y-10 order-2 md:order-1"
             >
-              <h3 className="text-5xl font-serif text-neutral-900 italic tracking-tighter leading-none">Versatility in <br /> Every Weave</h3>
+              <h3 className="text-5xl font-serif text-neutral-900 italic tracking-tighter leading-none">KMS Carpets</h3>
               <p className="text-neutral-600 leading-[2] font-light text-lg">
                 Engineered for excellence, KMS Carpets offers a comprehensive catalogue of high-performance flooring. Tailoring durability with contemporary design, we provide the foundational elegance for commercial and modern residential projects.
               </p>

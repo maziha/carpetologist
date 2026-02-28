@@ -7,7 +7,7 @@ export const WhatsAppFloater = () => {
     const [message, setMessage] = useState('');
 
     const handleSend = () => {
-        const textToEncode = message || "Hello Carpetologist, I'm interested in your collections.";
+        const textToEncode = message || "Hello KMS Traders - Carpetologist, I'm interested in your collections.";
         const whatsappUrl = `https://wa.me/917558077632?text=${encodeURIComponent(textToEncode)}`;
         window.open(whatsappUrl, '_blank');
         setMessage('');
@@ -32,8 +32,8 @@ export const WhatsAppFloater = () => {
                                     <span className="text-[#128C7E] font-serif font-bold text-lg">C</span>
                                 </div>
                                 <div className="text-white">
-                                    <h3 className="font-medium text-sm">Carpetologist</h3>
-                                    <p className="text-[10px] opacity-90">Usually replies instantly</p>
+                                    <h3 className="font-medium text-sm">KMS Traders — Carpetologist</h3>
+                                    <p className="text-[10px] opacity-90">Muvattupuzha, Ernakulam</p>
                                 </div>
                             </div>
                             <button
@@ -48,7 +48,7 @@ export const WhatsAppFloater = () => {
                         <div className="bg-[#E5DDD5] p-6 min-h-[150px] relative">
                             {/* Chat bubble background pattern opacity layer could go here */}
                             <div className="bg-white p-3 rounded-lg rounded-tl-none shadow-sm max-w-[85%] text-sm text-neutral-800 leading-relaxed relative">
-                                <p>Hello! How can we help you create your dream space today?</p>
+                                <p>Hello! Welcome to KMS Traders — Carpetologist. How can we help you create your dream space today?</p>
                                 <span className="text-[9px] text-neutral-400 absolute bottom-1 right-2">
                                     {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                                 </span>

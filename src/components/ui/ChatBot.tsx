@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageSquare, X, Send, ChevronRight } from 'lucide-react';
+import { MessageSquare, X, ChevronRight } from 'lucide-react';
 
 interface Option {
     label: string;
@@ -14,9 +14,10 @@ interface BotStep {
 
 const BOT_STEPS: Record<string, BotStep> = {
     start: {
-        text: "Welcome to Carpetologist. I am your digital concierge. How may I assist you today?",
+        text: "Welcome to Carpetologist, part of the KMS Traders group. I am your digital concierge. How may I assist you today?",
         options: [
             { label: "View Collections", nextStep: "collections" },
+            { label: "Our Brands", nextStep: "brands" },
             { label: "Visit Showroom", nextStep: "visit" },
             { label: "Contact Expert", nextStep: "contact" },
             { label: "About Us", nextStep: "about" },
@@ -59,8 +60,16 @@ const BOT_STEPS: Record<string, BotStep> = {
             { label: "Back to Menu", nextStep: "start" },
         ],
     },
+    brands: {
+        text: "KMS Traders group includes three brands: Carpetologist (luxury imported carpets), Horizon Ventures (artificial grass & PVC mats), and KMS Carpets (commercial flooring solutions).",
+        options: [
+            { label: "Horizon Ventures", nextStep: "navigate_horizon" },
+            { label: "KMS Carpets", nextStep: "navigate_kms" },
+            { label: "Back to Menu", nextStep: "start" },
+        ],
+    },
     visit: {
-        text: "We would be honored to host you. We are located in the Design District.",
+        text: "We would be honored to host you at our showroom in Muvattupuzha, Ernakulam, Kerala.",
         options: [
             { label: "Get Directions", nextStep: "navigate_contact" },
             { label: "Book Appointment", nextStep: "navigate_contact" },
@@ -68,16 +77,16 @@ const BOT_STEPS: Record<string, BotStep> = {
         ]
     },
     contact: {
-        text: "Our experts are ready to guide you. You can reach us via phone or email directly from our contact page.",
+        text: "Our experts are ready to guide you. Reach us at kmstraders25@gmail.com or call +91 75580 77632. You can also visit our contact page.",
         options: [
             { label: "Go to Contact", nextStep: "navigate_contact" },
             { label: "Back to Menu", nextStep: "start" },
         ]
     },
     about: {
-        text: "Since 1978, Carpetologist has been the bridge between Anatolian mastery and global interiors.",
+        text: "Carpetologist is part of the KMS Traders group, based in Muvattupuzha, Ernakulam, Kerala. We are the bridge between global carpet artistry and modern interiors, alongside our sister brands Horizon Ventures and KMS Carpets.",
         options: [
-            { label: "Read Our Story", nextStep: "start" },
+            { label: "Our Brands", nextStep: "brands" },
             { label: "View Collections", nextStep: "collections" },
         ]
     },
@@ -87,6 +96,14 @@ const BOT_STEPS: Record<string, BotStep> = {
     },
     navigate_contact: {
         text: "Taking you to our contact concierge...",
+        options: []
+    },
+    navigate_horizon: {
+        text: "Taking you to Horizon Ventures...",
+        options: []
+    },
+    navigate_kms: {
+        text: "Taking you to KMS Carpets...",
         options: []
     }
 };
@@ -123,6 +140,10 @@ export const ChatBot = () => {
                     setTimeout(() => window.location.href = '/collections', 1500);
                 } else if (option.nextStep === 'navigate_contact') {
                     setTimeout(() => window.location.href = '/contact', 1500);
+                } else if (option.nextStep === 'navigate_horizon') {
+                    setTimeout(() => window.location.href = '/horizon', 1500);
+                } else if (option.nextStep === 'navigate_kms') {
+                    setTimeout(() => window.location.href = '/kms', 1500);
                 }
             }
         }, 600);
@@ -145,7 +166,7 @@ export const ChatBot = () => {
                                     <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
                                 </div>
                                 <div>
-                                    <h3 className="text-white font-serif italic text-sm">Carpetologist</h3>
+                                    <h3 className="text-white font-serif italic text-sm">KMS Traders — Carpetologist</h3>
                                     <p className="text-[10px] text-neutral-400 uppercase tracking-widest">Concierge</p>
                                 </div>
                             </div>

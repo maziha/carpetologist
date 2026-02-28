@@ -15,10 +15,10 @@ export const SisterBrandsPage = () => {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                         >
-                            <p className="text-amber-500 uppercase tracking-[0.4em] text-[10px] mb-6">Group Synergy</p>
+                            <p className="text-amber-500 uppercase tracking-[0.4em] text-[10px] mb-6">KMS Traders Group</p>
                             <h2 className="text-5xl font-serif italic mb-10 tracking-tight">Integrated Living</h2>
                             <p className="text-neutral-400 leading-relaxed font-light mb-12 text-lg">
-                                From the lush entry of a Horizon lawn to the warm embrace of a Carpetologist rug, our group of companies provides a holistic approach to luxury ground coverings.
+                                Based in Muvattupuzha, Ernakulam, Kerala — the KMS Traders group brings together Carpetologist, Horizon Ventures, and KMS Carpets, providing a holistic approach to luxury ground coverings.
                             </p>
                             <button className="group relative px-12 py-5 overflow-hidden">
                                 <span className="relative z-10 text-[10px] tracking-[0.3em] uppercase text-white transition-colors duration-500 group-hover:text-black">Download Group Brochure</span>

@@ -36,7 +36,7 @@ export const Navigation = () => {
   const navLinks = [
     { path: '/', label: 'Home' },
     { path: '/gallery', label: 'Gallery' },
-    { path: '/sister-brands', label: 'The Group' },
+    { path: '/sister-brands', label: 'Our Brands' },
     { path: '/contact', label: 'Contact' },
   ];
 

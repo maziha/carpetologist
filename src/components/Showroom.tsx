@@ -94,7 +94,7 @@ export const Showroom = ({ hideHeader = false }: ShowroomProps) => {
               <div className="flex items-center gap-10">
                 <div className="flex flex-col gap-2">
                   <span className="text-amber-600 text-xs font-serif italic">Location</span>
-                  <span className="text-neutral-400 text-[10px] tracking-widest uppercase">Design District</span>
+                  <span className="text-neutral-400 text-[10px] tracking-widest uppercase">Muvattupuzha, Ernakulam</span>
                 </div>
                 <div className="h-10 w-px bg-stone-200" />
                 <div className="flex flex-col gap-2">

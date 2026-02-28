@@ -39,7 +39,7 @@ const AnimatedRoutes = () => {
 
 function App() {
   useEffect(() => {
-    document.title = 'Carpetologist - Luxury Imported Heritage';
+    document.title = 'Carpetologist — Luxury Carpets | KMS Traders, Muvattupuzha';
   }, []);
 
   return (
