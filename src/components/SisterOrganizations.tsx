@@ -29,7 +29,7 @@ export const SisterOrganizations = ({ hideHeader = false }: SisterOrganizationsP
               Synergy
             </p>
             <h2 className="text-6xl md:text-7xl font-serif text-neutral-900 mb-10 italic tracking-tight">
-              KMS Traders
+              OUR GROUP
             </h2>
             <div className="h-px w-24 mx-auto bg-amber-600/30 mb-8" />
           </motion.div>

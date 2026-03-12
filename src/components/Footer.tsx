@@ -16,9 +16,9 @@ export const Footer = () => {
               A part of the KMS Traders group, based in Muvattupuzha, Ernakulam, Kerala. Where heritage meets artistry in every imported masterpiece.
             </p>
             <div className="flex gap-8">
-              <motion.a whileHover={{ y: -3 }} href="#" className="text-neutral-500 hover:text-white transition-colors"><Instagram size={18} strokeWidth={1.5} /></motion.a>
-              <motion.a whileHover={{ y: -3 }} href="#" className="text-neutral-500 hover:text-white transition-colors"><Facebook size={18} strokeWidth={1.5} /></motion.a>
-              <motion.a whileHover={{ y: -3 }} href="#" className="text-neutral-500 hover:text-white transition-colors"><Mail size={18} strokeWidth={1.5} /></motion.a>
+              <motion.a whileHover={{ y: -3 }} href="#" className="text-neutral-400 hover:text-white transition-colors" aria-label="Visit our Instagram"><Instagram size={18} strokeWidth={1.5} /></motion.a>
+              <motion.a whileHover={{ y: -3 }} href="#" className="text-neutral-400 hover:text-white transition-colors" aria-label="Visit our Facebook"><Facebook size={18} strokeWidth={1.5} /></motion.a>
+              <motion.a whileHover={{ y: -3 }} href="#" className="text-neutral-400 hover:text-white transition-colors" aria-label="Email Us"><Mail size={18} strokeWidth={1.5} /></motion.a>
             </div>
           </div>
 
@@ -26,20 +26,20 @@ export const Footer = () => {
           <div>
             <h4 className="text-[10px] text-amber-500 font-sans tracking-[0.4em] uppercase mb-12">Collections</h4>
             <ul className="space-y-6 text-[10px] tracking-[0.4em] uppercase font-light">
-              <li><Link to="/collections" className="hover:text-amber-400 transition-all duration-300">Turkish Heritage</Link></li>
-              <li><Link to="/collections" className="hover:text-amber-400 transition-all duration-300">Artisan Weaves</Link></li>
-              <li><Link to="/collections" className="hover:text-amber-400 transition-all duration-300">Modern Luxury</Link></li>
-              <li><Link to="/collections" className="hover:text-amber-400 transition-all duration-300">Antiques</Link></li>
+              <li><Link to="/collections" className="text-neutral-300 hover:text-amber-500 transition-all duration-300">Turkish Heritage</Link></li>
+              <li><Link to="/collections" className="text-neutral-300 hover:text-amber-500 transition-all duration-300">Artisan Weaves</Link></li>
+              <li><Link to="/collections" className="text-neutral-300 hover:text-amber-500 transition-all duration-300">Modern Luxury</Link></li>
+              <li><Link to="/collections" className="text-neutral-300 hover:text-amber-500 transition-all duration-300">Antiques</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="text-[10px] text-amber-500 font-sans tracking-[0.4em] uppercase mb-12">KMS Traders Group</h4>
             <ul className="space-y-6 text-[10px] tracking-[0.4em] uppercase font-light">
-              <li><Link to="/horizon" className="hover:text-amber-400 transition-all duration-300">Horizon Ventures</Link></li>
-              <li><Link to="/kms" className="hover:text-amber-400 transition-all duration-300">KMS Carpets</Link></li>
-              <li><Link to="/sister-brands" className="hover:text-amber-400 transition-all duration-300">Our Brands</Link></li>
-              <li><Link to="/contact" className="hover:text-amber-400 transition-all duration-300">Contact</Link></li>
+              <li><Link to="/horizon" className="text-neutral-300 hover:text-amber-500 transition-all duration-300">Horizon Ventures</Link></li>
+              <li><Link to="/kms" className="text-neutral-300 hover:text-amber-500 transition-all duration-300">KMS Carpets</Link></li>
+              <li><Link to="/sister-brands" className="text-neutral-300 hover:text-amber-500 transition-all duration-300">Our Brands</Link></li>
+              <li><Link to="/contact" className="text-neutral-300 hover:text-amber-500 transition-all duration-300">Contact</Link></li>
             </ul>
           </div>
 
@@ -51,7 +51,7 @@ export const Footer = () => {
               <p className="text-neutral-300">+91 75580 77632</p>
             </div>
             <div className="pt-4">
-              <p className="text-[9px] text-neutral-600 leading-relaxed uppercase tracking-widest">
+              <p className="text-[9px] text-neutral-400 leading-relaxed uppercase tracking-widest">
                 Muvattupuzha, Ernakulam<br />Kerala, India
               </p>
             </div>
@@ -59,12 +59,12 @@ export const Footer = () => {
         </div>
 
         <div className="border-t border-white/5 pt-16 flex flex-col md:flex-row justify-between items-center gap-8">
-          <p className="text-[9px] tracking-[0.5em] uppercase text-neutral-700">
+          <p className="text-[9px] tracking-[0.5em] uppercase text-neutral-400">
             &copy; {currentYear} KMS Traders — Carpetologist. Muvattupuzha, Ernakulam, Kerala.
           </p>
-          <div className="flex gap-12 text-[9px] tracking-[0.4em] uppercase text-neutral-700">
-            <a href="#" className="hover:text-white transition-colors">Privacy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms</a>
+          <div className="flex gap-12 text-[9px] tracking-[0.4em] uppercase text-neutral-400">
+            <a href="#" className="hover:text-white transition-colors" aria-label="Privacy Policy">Privacy</a>
+            <a href="#" className="hover:text-white transition-colors" aria-label="Terms of Service">Terms</a>
           </div>
         </div>
       </div>

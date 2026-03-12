@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { PageTransition } from '../components/ui/PageTransition';
 import { Download, ArrowRight } from 'lucide-react';
 import { Navigation } from '../components/Navigation';
+import SEO from '../components/ui/SEO';
 
 
 // Using the KMS Carpets image
@@ -22,6 +23,10 @@ export const KMSPage = () => {
 
     return (
         <PageTransition>
+            <SEO
+                title="Commercial Carpets & Tiles Kerala | KMS Carpets Muvattupuzha"
+                description="Luxury commercial flooring solutions for hospitality, corporate, and residential projects. KMS Carpets (KMS Traders) offers high-durability modular tiles in Kerala."
+            />
             <div className="bg-stone-100 min-h-screen">
                 <Navigation />
 

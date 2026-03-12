@@ -1,10 +1,16 @@
 import { SisterOrganizations } from '../components/SisterOrganizations';
+import { Collections as CollectionsSection } from '../components/Collections';
 import { PageTransition } from '../components/ui/PageTransition';
 import { motion } from 'framer-motion';
+import SEO from '../components/ui/SEO';
 
 export const SisterBrandsPage = () => {
     return (
         <PageTransition>
+            <SEO
+                title="KMS Traders Group | Luxury Living Solutions Kerala"
+                description="KMS Traders (Muvattupuzha) is the parent organization of Carpetologist, Horizon Ventures, and KMS Carpets. Expert flooring and landscaping solutions in Ernakulam."
+            />
             <div className="bg-stone-50 min-h-screen">
                 <SisterOrganizations />
 
@@ -38,6 +44,8 @@ export const SisterBrandsPage = () => {
                                         src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800"
                                         className="w-full h-full object-cover grayscale-[0.5] hover:grayscale-0 transition-all duration-[2s]"
                                         alt="Luxury Living"
+                                        loading="lazy"
+                                        decoding="async"
                                     />
                                 </motion.div>
                                 <motion.div
@@ -51,6 +59,8 @@ export const SisterBrandsPage = () => {
                                         src="https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=800"
                                         className="w-full h-full object-cover grayscale-[0.5] hover:grayscale-0 transition-all duration-[2s]"
                                         alt="Horizon Landscape"
+                                        loading="lazy"
+                                        decoding="async"
                                     />
                                 </motion.div>
                             </div>
@@ -66,6 +76,8 @@ export const SisterBrandsPage = () => {
                                         src="https://images.pexels.com/photos/6045093/pexels-photo-6045093.jpeg?auto=compress&cs=tinysrgb&w=800"
                                         className="w-full h-full object-cover grayscale-[0.5] hover:grayscale-0 transition-all duration-[2s]"
                                         alt="KMS Texture"
+                                        loading="lazy"
+                                        decoding="async"
                                     />
                                 </motion.div>
                                 <motion.div
@@ -79,6 +91,8 @@ export const SisterBrandsPage = () => {
                                         src="https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=800"
                                         className="w-full h-full object-cover grayscale-[0.5] hover:grayscale-0 transition-all duration-[2s]"
                                         alt="Boutique Interior"
+                                        loading="lazy"
+                                        decoding="async"
                                     />
                                 </motion.div>
                             </div>

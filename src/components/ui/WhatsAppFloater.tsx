@@ -39,6 +39,7 @@ export const WhatsAppFloater = () => {
                             <button
                                 onClick={() => setIsOpen(false)}
                                 className="text-white/80 hover:text-white transition-colors"
+                                aria-label="Close WhatsApp Window"
                             >
                                 <X size={20} />
                             </button>
@@ -68,6 +69,7 @@ export const WhatsAppFloater = () => {
                             <button
                                 onClick={handleSend}
                                 className="w-10 h-10 bg-[#128C7E] rounded-full flex items-center justify-center text-white hover:bg-[#075E54] transition-colors shadow-sm"
+                                aria-label="Send WhatsApp Message"
                             >
                                 <Send size={16} className="ml-0.5" />
                             </button>

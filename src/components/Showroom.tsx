@@ -23,7 +23,9 @@ export const Showroom = ({ hideHeader = false }: ShowroomProps) => {
         <img
           src={showroomBg}
           className="w-full h-full object-cover"
-          alt="Showroom bg"
+          alt="Showroom background"
+          loading="lazy"
+          decoding="async"
         />
       </motion.div>
 
@@ -57,8 +59,10 @@ export const Showroom = ({ hideHeader = false }: ShowroomProps) => {
             >
               <img
                 src={showroom1}
-                alt="Showroom gallery"
+                alt="Showroom Gallery Interior"
                 className="w-full h-full object-cover hover:scale-110 transition-transform duration-[2s]"
+                loading="lazy"
+                decoding="async"
               />
             </motion.div>
             <motion.div
@@ -70,8 +74,10 @@ export const Showroom = ({ hideHeader = false }: ShowroomProps) => {
             >
               <img
                 src={showroom2}
-                alt="Carpet selection"
+                alt="Finest Carpet Selection Showroom"
                 className="w-full h-full object-cover hover:scale-110 transition-transform duration-[2s]"
+                loading="lazy"
+                decoding="async"
               />
             </motion.div>
           </div>

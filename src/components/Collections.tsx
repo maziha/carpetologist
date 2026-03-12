@@ -111,6 +111,8 @@ export const Collections = ({ hideHeader = false }: CollectionsProps) => {
                   animate={{ scale: hoveredId === collection.id ? 1.05 : 1 }}
                   transition={{ duration: 1.5, ease: [0.33, 1, 0.68, 1] }}
                   className="w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-neutral-950/40 group-hover:bg-neutral-950/60 transition-all duration-700" />
                 <div className="absolute inset-0 border border-white/5 m-4 rounded-2xl" />

@@ -36,7 +36,7 @@ export const Navigation = () => {
   const navLinks = [
     { path: '/', label: 'Home' },
     { path: '/gallery', label: 'Gallery' },
-    { path: '/sister-brands', label: 'Our Brands' },
+    { path: '/sister-brands', label: 'Our Group' },
     { path: '/contact', label: 'Contact' },
   ];
 
@@ -85,6 +85,7 @@ export const Navigation = () => {
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={`md:hidden p-2 ${textColorClass}`}
+            aria-label="Toggle Navigation Menu"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>

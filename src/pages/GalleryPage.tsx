@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { PageTransition } from '../components/ui/PageTransition';
 import { X, ZoomIn } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
+import SEO from '../components/ui/SEO';
 
 import img1 from '../assets/images/IMG_20260201_151952.jpg';
 import img2 from '../assets/images/IMG_20260201_150136.jpg';
@@ -17,7 +18,7 @@ import img10 from '../assets/images/IMG_20260201_150729.jpg';
 import img11 from '../assets/images/IMG_20260201_150814.jpg';
 import img12 from '../assets/images/IMG_20260201_150852.jpg';
 import img13 from '../assets/images/IMG_20260201_150917.jpg';
-import img14 from '../assets/images/IMG_20260201_150937.jpg';
+const img14 = '/assets/heroBg.webp';
 import img15 from '../assets/images/IMG_20260201_150953.jpg';
 import img16 from '../assets/images/IMG_20260201_151018.jpg';
 import img17 from '../assets/images/IMG_20260201_151048.jpg';
@@ -80,6 +81,10 @@ export const GalleryPage = () => {
 
     return (
         <PageTransition>
+            <SEO
+                title="Curated Rug Gallery | Imported Carpet Designs Kerala"
+                description="View our curated gallery of luxury carpets. From Turkish kilims to Persian masterpieces, find the perfect design for your home in Ernakulam."
+            />
             <div className="bg-stone-50 min-h-screen pt-40 pb-32">
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="text-center mb-20">
@@ -123,12 +128,13 @@ export const GalleryPage = () => {
                                     className="break-inside-avoid relative group cursor-pointer"
                                     onClick={() => setSelectedImage(image)}
                                 >
-                                    <div className="relative overflow-hidden bg-neutral-200 rounded-2xl">
+                                    <div className="relative overflow-hidden bg-neutral-200 rounded-2xl aspect-[16/11] md:aspect-square lg:aspect-[3/4]">
                                         <img
                                             src={image.src}
                                             alt={image.title}
                                             loading="lazy"
-                                            className="w-full h-auto object-cover transition-transform duration-[1.5s] group-hover:scale-110"
+                                            decoding="async"
+                                            className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-110"
                                         />
                                         <div className="absolute inset-0 bg-neutral-900/0 group-hover:bg-neutral-900/20 transition-all duration-500" />
 

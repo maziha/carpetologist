@@ -3,8 +3,9 @@ import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-// Import local image for Hero
-import heroBg from '../assets/images/IMG_20260201_150937.jpg'; // Using a high-res aesthetic image from the gallery
+// Using public assets for faster LCP discovery
+const heroBg = '/assets/heroBg.webp';
+const heroMobileBg = '/assets/hero-mobile.webp';
 
 export const Hero = () => {
   const navigate = useNavigate();
@@ -32,13 +33,20 @@ export const Hero = () => {
         className="absolute inset-0 z-0"
         style={{ y: y1, scale }}
       >
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url(${heroBg})`,
-            filter: 'brightness(0.35) contrast(1.1)',
-          }}
-        />
+        <picture>
+          <source media="(max-width: 768px)" srcSet={heroMobileBg} />
+          <source media="(min-width: 769px)" srcSet={heroBg} />
+          <img
+            src={heroBg}
+            alt="Luxury Carpet Collection"
+            className="w-full h-full object-cover"
+            style={{
+              filter: 'brightness(0.35) contrast(1.1)',
+            }}
+            fetchPriority="high"
+            decoding="async"
+          />
+        </picture>
       </motion.div>
 
       <div className="absolute inset-0 z-10 bg-gradient-to-b from-neutral-950/20 via-neutral-950/40 to-neutral-950" />
@@ -103,7 +111,7 @@ export const Hero = () => {
       >
         <div className="flex flex-col items-center gap-4">
           <span className="text-[8px] tracking-[0.4em] uppercase text-neutral-500 rotate-90 mb-8 whitespace-nowrap">Scroll to explore</span>
-          <button className="text-amber-500/50 hover:text-amber-500 transition-all animate-bounce">
+          <button className="text-amber-500/50 hover:text-amber-500 transition-all animate-bounce" aria-label="Scroll down">
             <ChevronDown size={32} strokeWidth={1} />
           </button>
         </div>

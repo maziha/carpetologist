@@ -86,6 +86,8 @@ export const About = ({ hideHeader = false }: AboutProps) => {
                 src={aboutImg}
                 alt="Carpet detail"
                 className="w-full h-full object-cover grayscale-[0.3] hover:grayscale-0 transition-all duration-1000"
+                loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-neutral-900/5" />
             </div>

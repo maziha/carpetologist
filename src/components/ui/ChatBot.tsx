@@ -173,6 +173,7 @@ export const ChatBot = () => {
                             <button
                                 onClick={() => setIsOpen(false)}
                                 className="text-neutral-400 hover:text-white transition-colors"
+                                aria-label="Close Concierge"
                             >
                                 <X size={18} />
                             </button>
@@ -219,6 +220,7 @@ export const ChatBot = () => {
             <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="group relative w-14 h-14 bg-neutral-900 rounded-full flex items-center justify-center shadow-xl hover:bg-amber-600 transition-colors duration-500"
+                aria-label={isOpen ? "Close Concierge Chat" : "Open Concierge Chat"}
             >
                 <MessageSquare className={`w-6 h-6 text-white transition-transform duration-300 ${isOpen ? 'scale-0' : 'scale-100'}`} />
                 <div className={`absolute inset-0 flex items-center justify-center transition-transform duration-300 ${isOpen ? 'scale-100' : 'scale-0'}`}>

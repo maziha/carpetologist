@@ -1,11 +1,15 @@
-import React from 'react';
 import { Collections as CollectionsSection } from '../components/Collections';
 import { PageTransition } from '../components/ui/PageTransition';
 import { motion } from 'framer-motion';
+import SEO from '../components/ui/SEO';
 
 export const CollectionsPage = () => {
     return (
         <PageTransition>
+            <SEO
+                title="Premium Carpet Collection Kerala | Imported Rugs Ernakulam"
+                description="Explore our exclusive collection of hand-knotted Turkish, Persian, and Silk carpets. Premium quality rugs available at Carpetologist, Muvattupuzha."
+            />
             <div className="bg-neutral-900 min-h-screen">
                 {/* We use the header inside the Collections component for consistency */}
                 <CollectionsSection />
