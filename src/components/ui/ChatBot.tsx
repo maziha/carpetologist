@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, X, ChevronRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 interface Option {
     label: string;
@@ -109,6 +110,7 @@ const BOT_STEPS: Record<string, BotStep> = {
 };
 
 export const ChatBot = () => {
+    const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
     const [history, setHistory] = useState<{ sender: 'bot' | 'user'; text: string }[]>([
         { sender: 'bot', text: BOT_STEPS['start'].text }
@@ -137,13 +139,13 @@ export const ChatBot = () => {
 
                 // Handle navigation side effects
                 if (option.nextStep === 'navigate_collections') {
-                    setTimeout(() => window.location.href = '/collections', 1500);
+                    setTimeout(() => navigate('/gallery'), 1500);
                 } else if (option.nextStep === 'navigate_contact') {
-                    setTimeout(() => window.location.href = '/contact', 1500);
+                    setTimeout(() => navigate('/contact'), 1500);
                 } else if (option.nextStep === 'navigate_horizon') {
-                    setTimeout(() => window.location.href = '/horizon', 1500);
+                    setTimeout(() => navigate('/horizon'), 1500);
                 } else if (option.nextStep === 'navigate_kms') {
-                    setTimeout(() => window.location.href = '/kms', 1500);
+                    setTimeout(() => navigate('/kms'), 1500);
                 }
             }
         }, 600);
