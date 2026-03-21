@@ -3,7 +3,7 @@ import { Leaf, Grid3x3 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 // Import local images from assets/images
-import horizonImg from '../assets/images/IMG_20260201_150852.jpg';
+import horizonImg from '../assets/images/2524DOUBLE.jpg';
 import kmsImg from '../assets/images/IMG_20260201_150218.jpg';
 
 

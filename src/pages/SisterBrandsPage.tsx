@@ -1,5 +1,5 @@
 import { SisterOrganizations } from '../components/SisterOrganizations';
-import { Collections as CollectionsSection } from '../components/Collections';
+
 import { PageTransition } from '../components/ui/PageTransition';
 import { motion } from 'framer-motion';
 import SEO from '../components/ui/SEO';
@@ -26,10 +26,7 @@ export const SisterBrandsPage = () => {
                             <p className="text-neutral-400 leading-relaxed font-light mb-12 text-lg">
                                 Based in Muvattupuzha, Ernakulam, Kerala — the KMS Traders group brings together Carpetologist, Horizon Ventures, and KMS Carpets, providing a holistic approach to luxury ground coverings.
                             </p>
-                            <button className="group relative px-12 py-5 overflow-hidden">
-                                <span className="relative z-10 text-[10px] tracking-[0.3em] uppercase text-white transition-colors duration-500 group-hover:text-black">Download Group Brochure</span>
-                                <div className="absolute inset-0 border border-white/20 group-hover:bg-white transition-all duration-500" />
-                            </button>
+
                         </motion.div>
 
                         <div className="grid grid-cols-2 gap-6">
