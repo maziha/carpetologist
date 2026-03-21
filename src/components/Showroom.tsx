@@ -12,7 +12,7 @@ interface ShowroomProps {
 
 export const Showroom = ({ hideHeader = false }: ShowroomProps) => {
   return (
-    <section className="relative bg-stone-50 py-40 overflow-hidden">
+    <section className="relative bg-stone-50 py-20 md:py-40 overflow-hidden">
       {/* Dynamic Background */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -41,21 +41,21 @@ export const Showroom = ({ hideHeader = false }: ShowroomProps) => {
             <p className="text-[10px] tracking-[0.6em] text-amber-600 uppercase mb-6">
               The Gallery
             </p>
-            <h2 className="text-6xl md:text-8xl font-serif text-neutral-900 mb-10 italic tracking-tighter">
+            <h2 className="text-4xl sm:text-6xl md:text-8xl font-serif text-neutral-900 mb-10 italic tracking-tighter">
               An Immersion in Art
             </h2>
             <div className="h-px w-32 mx-auto bg-gradient-to-r from-transparent via-amber-600/50 to-transparent" />
           </motion.div>
         )}
 
-        <div className="grid md:grid-cols-2 gap-24">
-          <div className="grid grid-cols-2 gap-8 h-fit">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-24">
+          <div className="grid grid-cols-2 gap-4 md:gap-8 h-fit">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="relative h-[450px] shadow-2xl overflow-hidden mt-20 rounded-2xl"
+              className="relative h-[300px] md:h-[450px] shadow-2xl overflow-hidden mt-10 md:mt-20 rounded-2xl"
             >
               <img
                 src={showroom1}
@@ -70,7 +70,7 @@ export const Showroom = ({ hideHeader = false }: ShowroomProps) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative h-[450px] shadow-2xl overflow-hidden rounded-2xl"
+              className="relative h-[300px] md:h-[450px] shadow-2xl overflow-hidden rounded-2xl"
             >
               <img
                 src={showroom2}
@@ -88,12 +88,12 @@ export const Showroom = ({ hideHeader = false }: ShowroomProps) => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="bg-white p-16 border border-stone-200 relative group shadow-sm"
+              className="bg-white p-8 md:p-16 border border-stone-200 relative group shadow-sm"
             >
-              <div className="absolute top-0 right-0 p-8">
+              <div className="absolute top-0 right-0 p-4 md:p-8">
                 <span className="text-[8px] tracking-[0.5em] text-amber-600/40 uppercase">A-01</span>
               </div>
-              <h3 className="text-3xl font-serif text-neutral-900 mb-10 italic tracking-wide">The Boutique Experience</h3>
+              <h3 className="text-2xl md:text-3xl font-serif text-neutral-900 mb-10 italic tracking-wide">The Boutique Experience</h3>
               <p className="text-neutral-600 leading-[2] text-sm font-light font-sans mb-10">
                 Our showroom is a curated space where time slows down. Discover our full inventory under museum-quality lighting, guided by experts who understand the history of every knot.
               </p>
@@ -115,7 +115,7 @@ export const Showroom = ({ hideHeader = false }: ShowroomProps) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="grid grid-cols-2 gap-8"
+              className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8"
             >
               <div className="flex items-center gap-6 group">
                 <div className="w-12 h-12 rounded-full border border-stone-200 flex items-center justify-center group-hover:border-amber-600/50 transition-colors duration-500">

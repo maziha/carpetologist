@@ -53,7 +53,7 @@ export const Navigation = () => {
         <div className="flex items-center justify-between">
           <Link
             to="/"
-            className={`text-2xl font-serif tracking-[0.3em] hover:text-amber-500 transition-all duration-500 uppercase flex items-center ${textColorClass}`}
+            className={`text-xl md:text-2xl font-serif tracking-[0.2em] md:tracking-[0.3em] hover:text-amber-500 transition-all duration-500 uppercase flex items-center ${textColorClass}`}
           >
             <span className="text-amber-500">C</span>
             <span>arpetologist</span>

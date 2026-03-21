@@ -6,6 +6,8 @@
   html {
     scroll-behavior: smooth;
     cursor: none; /* Globally hide the default cursor */
+    overflow-x: hidden;
+    max-width: 100vw;
   }
 
   body {
@@ -13,6 +15,8 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     cursor: none; /* Ensure body also hides it */
+    overflow-x: hidden;
+    max-width: 100vw;
   }
 
   /* Ensure interactive elements also inherit the hidden cursor so the custom one takes precedence */

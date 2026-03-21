@@ -15,7 +15,7 @@ export const SisterOrganizations = ({ hideHeader = false }: SisterOrganizationsP
   const navigate = useNavigate();
 
   return (
-    <section className="relative bg-stone-50 py-40 overflow-hidden">
+    <section className="relative bg-stone-50 py-20 md:py-40 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         {!hideHeader && (
           <motion.div
@@ -28,15 +28,15 @@ export const SisterOrganizations = ({ hideHeader = false }: SisterOrganizationsP
             <p className="text-[10px] tracking-[0.5em] text-amber-600 font-medium uppercase mb-6">
               Synergy
             </p>
-            <h2 className="text-6xl md:text-7xl font-serif text-neutral-900 mb-10 italic tracking-tight">
+            <h2 className="text-4xl sm:text-6xl md:text-7xl font-serif text-neutral-900 mb-10 italic tracking-tight">
               OUR GROUP
             </h2>
             <div className="h-px w-24 mx-auto bg-amber-600/30 mb-8" />
           </motion.div>
         )}
 
-        <div className="space-y-48">
-          <div className="grid md:grid-cols-2 gap-24 items-center">
+        <div className="space-y-24 md:space-y-48">
+          <div className="grid md:grid-cols-2 gap-12 md:gap-24 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -65,7 +65,7 @@ export const SisterOrganizations = ({ hideHeader = false }: SisterOrganizationsP
               transition={{ duration: 1.2, delay: 0.2 }}
               className="space-y-10"
             >
-              <h3 className="text-5xl font-serif text-neutral-900 italic tracking-tighter leading-none">Horizon Ventures</h3>
+              <h3 className="text-3xl md:text-5xl font-serif text-neutral-900 italic tracking-tighter leading-none">Horizon Ventures</h3>
               <p className="text-neutral-600 leading-[2] font-light text-lg">
                 Horizon Ventures creates evergreen landscapes that defy the elements. Specializing in premium artificial grass solutions, we transform outdoor voids into vibrant, maintenance-free sanctuaries of emerald perfection.
               </p>
@@ -80,7 +80,7 @@ export const SisterOrganizations = ({ hideHeader = false }: SisterOrganizationsP
             </motion.div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-24 items-center">
+          <div className="grid md:grid-cols-2 gap-12 md:gap-24 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -88,7 +88,7 @@ export const SisterOrganizations = ({ hideHeader = false }: SisterOrganizationsP
               transition={{ duration: 1.2, delay: 0.2 }}
               className="space-y-10 order-2 md:order-1"
             >
-              <h3 className="text-5xl font-serif text-neutral-900 italic tracking-tighter leading-none">KMS Carpets</h3>
+              <h3 className="text-3xl md:text-5xl font-serif text-neutral-900 italic tracking-tighter leading-none">KMS Carpets</h3>
               <p className="text-neutral-600 leading-[2] font-light text-lg">
                 Engineered for excellence, KMS Carpets offers a comprehensive catalogue of high-performance flooring. Tailoring durability with contemporary design, we provide the foundational elegance for commercial and modern residential projects.
               </p>

@@ -45,7 +45,7 @@ function App() {
     <Router>
       <StructuredData />
       <ScrollToTop />
-      <div className="min-h-screen bg-neutral-950 text-neutral-200 selection:bg-amber-500/30">
+      <div className="min-h-screen bg-neutral-950 text-neutral-200 selection:bg-amber-500/30 overflow-x-hidden w-full relative">
         <CustomCursor />
         <Navigation />
         {/* Floating Widgets */}

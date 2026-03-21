@@ -71,7 +71,7 @@ export const Collections = ({ hideHeader = false }: CollectionsProps) => {
   };
 
   return (
-    <section className="relative bg-neutral-900 py-32">
+    <section className="relative bg-neutral-900 py-20 md:py-32">
       <div className="max-w-7xl mx-auto px-6">
         {!hideHeader && (
           <motion.div
@@ -84,14 +84,14 @@ export const Collections = ({ hideHeader = false }: CollectionsProps) => {
             <p className="text-[10px] tracking-[0.5em] text-amber-500 uppercase mb-4">
               Curated Selection
             </p>
-            <h2 className="text-6xl md:text-7xl font-serif text-white mb-8 italic tracking-tight">
+            <h2 className="text-4xl sm:text-6xl md:text-7xl font-serif text-white mb-8 italic tracking-tight">
               The Legacy
             </h2>
             <div className="h-px w-24 mx-auto bg-white/10 mb-8" />
           </motion.div>
         )}
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12">
           {collections.map((collection, index) => (
             <motion.div
               key={collection.id}
@@ -125,7 +125,7 @@ export const Collections = ({ hideHeader = false }: CollectionsProps) => {
                 >
                   {collection.subtitle}
                 </motion.p>
-                <h3 className="text-4xl font-serif text-white italic tracking-tight">
+                <h3 className="text-3xl md:text-4xl font-serif text-white italic tracking-tight">
                   {collection.title}
                 </h3>
 

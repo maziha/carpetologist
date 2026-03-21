@@ -6,9 +6,9 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-neutral-950 border-t border-white/5 text-neutral-500 py-32 overflow-hidden">
+    <footer className="bg-neutral-950 border-t border-white/5 text-neutral-500 py-16 md:py-32 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-4 gap-16 mb-32 relative">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-16 mb-16 md:mb-32 relative">
           {/* Brand Column */}
           <div className="space-y-10 col-span-1 md:col-span-1">
             <h3 className="text-xl font-serif text-white tracking-[0.4em] uppercase">Carpetologist</h3>
@@ -58,7 +58,7 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-white/5 pt-16 flex flex-col md:flex-row justify-between items-center gap-8">
+        <div className="border-t border-white/5 pt-8 md:pt-16 flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
           <p className="text-[9px] tracking-[0.5em] uppercase text-neutral-400">
             &copy; {currentYear} KMS Traders — Carpetologist. Muvattupuzha, Ernakulam, Kerala.
           </p>

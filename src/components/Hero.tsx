@@ -28,7 +28,7 @@ export const Hero = () => {
   const scale = useTransform(smoothProgress, [0, 1], [1, 1.1]);
 
   return (
-    <section ref={containerRef} className="relative h-screen overflow-hidden bg-neutral-950">
+    <section ref={containerRef} className="relative h-[100dvh] overflow-hidden bg-neutral-950">
       <motion.div
         className="absolute inset-0 z-0"
         style={{ y: y1, scale }}
@@ -55,7 +55,7 @@ export const Hero = () => {
         className="relative z-20 h-full flex flex-col items-center justify-center text-center px-6"
         style={{ y: y2, opacity }}
       >
-        <div className="max-w-5xl space-y-12">
+        <div className="max-w-5xl w-full space-y-12">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -65,7 +65,7 @@ export const Hero = () => {
             <p className="text-[10px] md:text-xs text-amber-500 font-sans tracking-[0.8em] uppercase">
               The Collection
             </p>
-            <h1 className="text-7xl md:text-9xl font-serif text-white tracking-tighter leading-[0.9] italic">
+            <h1 className="text-5xl sm:text-7xl md:text-9xl font-serif text-white tracking-tighter leading-[0.9] italic">
               Carpetologist
             </h1>
           </motion.div>

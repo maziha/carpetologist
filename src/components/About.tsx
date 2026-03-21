@@ -47,7 +47,7 @@ export const About = ({ hideHeader = false }: AboutProps) => {
   ];
 
   return (
-    <section id="about" className="relative bg-white py-40 overflow-hidden">
+    <section id="about" className="relative bg-white py-20 md:py-40 overflow-hidden">
       {/* Background Decorative Element */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-amber-500/5 blur-[120px] -z-10" />
 
@@ -61,7 +61,7 @@ export const About = ({ hideHeader = false }: AboutProps) => {
             className="text-center mb-32"
           >
             <p className="text-[10px] tracking-[0.6em] text-amber-600 uppercase mb-6">Discovery</p>
-            <h2 className="text-6xl md:text-7xl font-serif text-neutral-900 mb-10 italic tracking-tight">
+            <h2 className="text-4xl sm:text-6xl md:text-7xl font-serif text-neutral-900 mb-10 italic tracking-tight">
               Art of Carpetology
             </h2>
             <div className="h-px w-24 mx-auto bg-gradient-to-r from-transparent via-amber-600/30 to-transparent mb-10" />
@@ -73,7 +73,7 @@ export const About = ({ hideHeader = false }: AboutProps) => {
           </motion.div>
         )}
 
-        <div className="grid md:grid-cols-2 gap-32 items-center mb-48">
+        <div className="grid md:grid-cols-2 gap-16 md:gap-32 items-center mb-24 md:mb-48">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -81,7 +81,7 @@ export const About = ({ hideHeader = false }: AboutProps) => {
             transition={{ duration: 1.2 }}
             className="relative"
           >
-            <div className="relative h-[700px] overflow-hidden rounded-2xl">
+            <div className="relative h-[400px] md:h-[700px] overflow-hidden rounded-2xl">
               <img
                 src={aboutImg}
                 alt="Carpet detail"
@@ -102,7 +102,7 @@ export const About = ({ hideHeader = false }: AboutProps) => {
             transition={{ duration: 1, delay: 0.3 }}
             className="space-y-12"
           >
-            <h3 className="text-5xl font-serif text-neutral-900 italic tracking-tight">Our Philosophy</h3>
+            <h3 className="text-3xl md:text-5xl font-serif text-neutral-900 italic tracking-tight">Our Philosophy</h3>
             <div className="space-y-8 text-neutral-600 font-light font-sans leading-[1.9] text-lg">
               <p>
                 Founded on a passion for preserving traditional weaving arts while embracing modern

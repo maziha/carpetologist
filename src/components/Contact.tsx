@@ -59,7 +59,7 @@ Sent from carpetologist.com contact form
   const isFormValid = formData.name && formData.email && formData.message;
 
   return (
-    <section id="contact" className="relative bg-white py-40">
+    <section id="contact" className="relative bg-white py-20 md:py-40">
       <div className="max-w-7xl mx-auto px-6">
         {!hideHeader && (
           <motion.div
@@ -72,7 +72,7 @@ Sent from carpetologist.com contact form
             <p className="text-[10px] tracking-[0.6em] text-amber-600 uppercase mb-6">
               Connect
             </p>
-            <h2 className="text-6xl md:text-7xl font-serif text-neutral-900 mb-8 italic tracking-tight">Get In Touch</h2>
+            <h2 className="text-4xl sm:text-6xl md:text-7xl font-serif text-neutral-900 mb-8 italic tracking-tight">Get In Touch</h2>
             <div className="h-px w-24 mx-auto bg-gradient-to-r from-transparent via-amber-600 to-transparent mb-8" />
             <p className="text-base md:text-lg text-neutral-600 max-w-2xl mx-auto leading-relaxed font-light font-sans">
               Interested in our collections or visiting our showroom? We'd love to hear from you.
@@ -80,19 +80,19 @@ Sent from carpetologist.com contact form
           </motion.div>
         )}
 
-        <div className="grid md:grid-cols-2 gap-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
           >
-            <div className="space-y-10 bg-stone-50 p-12 border border-stone-100 shadow-sm relative group">
+            <div className="space-y-10 bg-stone-50 p-6 md:p-12 border border-stone-100 shadow-sm relative group">
               <div className="absolute top-0 right-0 p-8">
                 <span className="text-[8px] tracking-[0.5em] text-amber-600/40 uppercase">Enquiry Form</span>
               </div>
 
-              <div className="grid grid-cols-2 gap-8 pt-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 pt-4 md:pt-8">
                 <div className="space-y-4">
                   <label htmlFor="name" className="block text-[10px] text-amber-600 uppercase tracking-[0.3em]">
                     Full Name *
@@ -124,7 +124,7 @@ Sent from carpetologist.com contact form
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                 <div className="space-y-4">
                   <label htmlFor="phone" className="block text-[10px] text-amber-600 uppercase tracking-[0.3em]">
                     Phone Number
@@ -172,7 +172,7 @@ Sent from carpetologist.com contact form
               </div>
 
               {/* Action Buttons */}
-              <div className="grid grid-cols-2 gap-4 pt-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
                 <button
                   onClick={handleEmailClick}
                   disabled={!isFormValid}
