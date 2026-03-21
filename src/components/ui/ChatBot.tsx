@@ -3,6 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, X, ChevronRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
+// Import local images from assets/images
+import turkishImg from '../../assets/images/IMG_20260201_151239.jpg';
+import persianImg from '../../assets/images/IMG_20260201_151148.jpg';
+import indianImg from '../../assets/images/IMG_20260201_151048.jpg';
+import designerImg from '../../assets/images/IMG_20260201_150917.jpg';
+
 interface Option {
     label: string;
     nextStep: string;
@@ -10,6 +16,7 @@ interface Option {
 
 interface BotStep {
     text: string;
+    image?: string;
     options?: Option[];
 }
 
@@ -35,6 +42,7 @@ const BOT_STEPS: Record<string, BotStep> = {
     },
     turkish_info: {
         text: "Our Turkish collection features authentic Anatolian motifs and natural dyes, sourced directly from heritage weavers.",
+        image: turkishImg,
         options: [
             { label: "See More", nextStep: "navigate_collections" },
             { label: "Back to Menu", nextStep: "start" },
@@ -42,6 +50,7 @@ const BOT_STEPS: Record<string, BotStep> = {
     },
     persian_info: {
         text: "Crafted by master artisans, our Persian collection represents the pinnacle of intricate craftsmanship.",
+        image: persianImg,
         options: [
             { label: "See More", nextStep: "navigate_collections" },
             { label: "Back to Menu", nextStep: "start" },
@@ -49,6 +58,7 @@ const BOT_STEPS: Record<string, BotStep> = {
     },
     indian_info: {
         text: "Vibrant and regal, our Indian collection celebrates the rich cultural tapestry of the subcontinent.",
+        image: indianImg,
         options: [
             { label: "See More", nextStep: "navigate_collections" },
             { label: "Back to Menu", nextStep: "start" },
@@ -56,6 +66,7 @@ const BOT_STEPS: Record<string, BotStep> = {
     },
     designer_info: {
         text: "For the modern connoisseur, our Designer collection blends traditional quality with contemporary aesthetics.",
+        image: designerImg,
         options: [
             { label: "See More", nextStep: "navigate_collections" },
             { label: "Back to Menu", nextStep: "start" },
@@ -112,7 +123,7 @@ const BOT_STEPS: Record<string, BotStep> = {
 export const ChatBot = () => {
     const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
-    const [history, setHistory] = useState<{ sender: 'bot' | 'user'; text: string }[]>([
+    const [history, setHistory] = useState<{ sender: 'bot' | 'user'; text: string; image?: string }[]>([
         { sender: 'bot', text: BOT_STEPS['start'].text }
     ]);
     const [currentStep, setCurrentStep] = useState('start');
@@ -134,7 +145,7 @@ export const ChatBot = () => {
         setTimeout(() => {
             const nextStepData = BOT_STEPS[option.nextStep];
             if (nextStepData) {
-                setHistory(prev => [...prev, { sender: 'bot', text: nextStepData.text }]);
+                setHistory(prev => [...prev, { sender: 'bot', text: nextStepData.text, image: nextStepData.image }]);
                 setCurrentStep(option.nextStep);
 
                 // Handle navigation side effects
@@ -159,22 +170,22 @@ export const ChatBot = () => {
                         initial={{ opacity: 0, y: 20, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 20, scale: 0.95 }}
-                        className="w-[350px] bg-white rounded-t-xl rounded-bl-xl shadow-2xl border border-stone-100 overflow-hidden flex flex-col max-h-[500px]"
+                        className="w-[350px] bg-white rounded-t-xl rounded-bl-xl shadow-2xl border border-stone-100 overflow-hidden flex flex-col h-[min(500px,calc(100vh-100px))]"
                     >
                         {/* Header */}
-                        <div className="bg-neutral-900 p-4 flex items-center justify-between">
+                        <div className="bg-neutral-900 p-4 flex items-center justify-between shrink-0">
                             <div className="flex items-center gap-3">
-                                <div className="w-8 h-8 rounded-full bg-amber-600 flex items-center justify-center">
+                                <div className="w-8 h-8 rounded-full bg-amber-600 flex items-center justify-center shrink-0">
                                     <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
                                 </div>
-                                <div>
-                                    <h3 className="text-white font-serif italic text-sm">KMS Traders — Carpetologist</h3>
-                                    <p className="text-[10px] text-neutral-400 uppercase tracking-widest">Concierge</p>
+                                <div className="overflow-hidden">
+                                    <h3 className="text-white font-serif italic text-sm leading-normal pt-1 truncate">KMS Traders — Carpetologist</h3>
+                                    <p className="text-[10px] text-neutral-400 uppercase tracking-widest mt-0.5">Concierge</p>
                                 </div>
                             </div>
                             <button
                                 onClick={() => setIsOpen(false)}
-                                className="text-neutral-400 hover:text-white transition-colors"
+                                className="text-neutral-400 hover:text-white transition-colors shrink-0 p-1"
                                 aria-label="Close Concierge"
                             >
                                 <X size={18} />
@@ -182,18 +193,23 @@ export const ChatBot = () => {
                         </div>
 
                         {/* Chat Area */}
-                        <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-stone-50 min-h-[300px]">
+                        <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-stone-50">
                             {history.map((msg, idx) => (
                                 <div
                                     key={idx}
                                     className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
                                 >
                                     <div
-                                        className={`max-w-[80%] p-3 rounded-xl text-sm leading-relaxed ${msg.sender === 'user'
+                                        className={`max-w-[85%] p-3 rounded-xl text-sm leading-relaxed ${msg.sender === 'user'
                                             ? 'bg-amber-600 text-white rounded-br-none'
                                             : 'bg-white border border-stone-100 text-neutral-600 rounded-bl-none shadow-sm'
                                             }`}
                                     >
+                                        {msg.image && (
+                                            <div className="mb-3 rounded-lg overflow-hidden border border-stone-100/50">
+                                                <img src={msg.image} alt="Sample" className="w-full h-32 object-cover hover:scale-105 transition-transform duration-500" />
+                                            </div>
+                                        )}
                                         {msg.text}
                                     </div>
                                 </div>
@@ -202,7 +218,7 @@ export const ChatBot = () => {
                         </div>
 
                         {/* Options Area */}
-                        <div className="p-4 bg-white border-t border-stone-100">
+                        <div className="p-4 bg-white border-t border-stone-100 shrink-0">
                             <div className="flex flex-wrap gap-2 justify-end">
                                 {BOT_STEPS[currentStep]?.options?.map((option, idx) => (
                                     <button
