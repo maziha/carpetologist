@@ -1,11 +1,8 @@
-import { motion } from 'framer-motion';
-import { Leaf, Grid3x3 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { Reveal } from './ui/Reveal';
 
-// Import local images from assets/images
 import horizonImg from '../assets/images/2524DOUBLE.jpg';
 import kmsImg from '../assets/images/IMG_20260201_150218.jpg';
-
 
 interface SisterOrganizationsProps {
   hideHeader?: boolean;
@@ -15,113 +12,37 @@ export const SisterOrganizations = ({ hideHeader = false }: SisterOrganizationsP
   const navigate = useNavigate();
 
   return (
-    <section className="relative bg-stone-50 py-20 md:py-40 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="relative py-24 md:py-40 overflow-hidden">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-12">
         {!hideHeader && (
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className="text-center mb-32"
-          >
-            <p className="text-[10px] tracking-[0.5em] text-amber-600 font-medium uppercase mb-6">
-              Synergy
-            </p>
-            <h2 className="text-4xl sm:text-6xl md:text-7xl font-serif text-neutral-900 mb-10 italic tracking-tight">
-              OUR GROUP
-            </h2>
-            <div className="h-px w-24 mx-auto bg-amber-600/30 mb-8" />
-          </motion.div>
+          <Reveal as="h2" className="display-lg font-light text-ink mb-16 md:mb-28">Our group</Reveal>
         )}
 
-        <div className="space-y-24 md:space-y-48">
-          <div className="grid md:grid-cols-2 gap-12 md:gap-24 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.2, ease: "easeOut" }}
-              className="relative aspect-[4/5] overflow-hidden group shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] rounded-2xl"
-            >
-              <img
-                src={horizonImg}
-                alt="Horizon Ventures Landscape"
-                className="w-full h-full object-cover transition-transform duration-[3s] group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-neutral-900/10" />
-              <div className="absolute bottom-12 left-12 flex items-center gap-6">
-                <div className="w-16 h-16 bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center">
-                  <Leaf className="w-8 h-8 text-white" strokeWidth={1} />
-                </div>
-                <span className="text-white text-[10px] tracking-[0.4em] uppercase font-light">Horizon Ventures</span>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.2, delay: 0.2 }}
-              className="space-y-10"
-            >
-              <h3 className="text-3xl md:text-5xl font-serif text-neutral-900 italic tracking-tighter leading-none">Horizon Ventures</h3>
-              <p className="text-neutral-600 leading-[2] font-light text-lg">
-                Horizon Ventures creates evergreen landscapes that defy the elements. Specializing in premium artificial grass solutions, we transform outdoor voids into vibrant, maintenance-free sanctuaries of emerald perfection.
+        <div className="space-y-24 md:space-y-40">
+          <div className="grid md:grid-cols-12 gap-10 md:gap-8 items-center">
+            <Reveal className="md:col-span-7 relative aspect-[4/3] overflow-hidden group">
+              <img src={horizonImg} alt="Horizon Ventures artificial grass at sunset" className="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async" />
+            </Reveal>
+            <Reveal delay={0.15} className="md:col-span-4 md:col-start-9 space-y-6">
+              <h3 className="font-display font-light text-ink text-5xl md:text-6xl leading-none">Horizon Ventures</h3>
+              <p className="text-lg text-ink/75 leading-relaxed">
+                Evergreen landscapes that defy the elements. Premium artificial grass that turns outdoor voids into vibrant, maintenance-free sanctuaries.
               </p>
-              <div className="pt-6">
-                <button
-                  onClick={() => navigate('/horizon')}
-                  className="px-12 py-5 bg-neutral-900 text-white text-[10px] tracking-[0.4em] uppercase hover:bg-amber-600 transition-all duration-500 rounded-none"
-                >
-                  Explore Solutions
-                </button>
-              </div>
-            </motion.div>
+              <button onClick={() => navigate('/horizon')} className="btn btn-oxblood">Explore solutions</button>
+            </Reveal>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 md:gap-24 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.2, delay: 0.2 }}
-              className="space-y-10 order-2 md:order-1"
-            >
-              <h3 className="text-3xl md:text-5xl font-serif text-neutral-900 italic tracking-tighter leading-none">KMS Carpets</h3>
-              <p className="text-neutral-600 leading-[2] font-light text-lg">
-                Engineered for excellence, KMS Carpets offers a comprehensive catalogue of high-performance flooring. Tailoring durability with contemporary design, we provide the foundational elegance for commercial and modern residential projects.
+          <div className="grid md:grid-cols-12 gap-10 md:gap-8 items-center">
+            <Reveal delay={0.15} className="md:col-span-4 md:col-start-2 space-y-6 order-2 md:order-1">
+              <h3 className="font-display font-light text-ink text-5xl md:text-6xl leading-none">KMS Carpets</h3>
+              <p className="text-lg text-ink/75 leading-relaxed">
+                A catalogue of high-performance flooring. Durability tailored to contemporary design, the foundation for commercial and modern residential projects.
               </p>
-              <div className="pt-6">
-                <button
-                  onClick={() => navigate('/kms')}
-                  className="px-12 py-5 border border-neutral-900/20 text-neutral-900 text-[10px] tracking-[0.4em] uppercase hover:bg-neutral-900 hover:text-white transition-all duration-500 rounded-none"
-                >
-                  View Catalogue
-                </button>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.2, ease: "easeOut" }}
-              className="relative aspect-[4/5] overflow-hidden group shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] order-1 md:order-2 rounded-2xl"
-            >
-              <img
-                src={kmsImg}
-                alt="KMS Carpets"
-                className="w-full h-full object-cover transition-transform duration-[3s] group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-neutral-900/10" />
-              <div className="absolute bottom-12 right-12 flex items-center gap-6 flex-row-reverse">
-                <div className="w-16 h-16 bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center">
-                  <Grid3x3 className="w-8 h-8 text-white" strokeWidth={1} />
-                </div>
-                <span className="text-white text-[10px] tracking-[0.4em] uppercase font-light">KMS Carpets</span>
-              </div>
-            </motion.div>
+              <button onClick={() => navigate('/kms')} className="btn btn-ghost-dark">View catalogue</button>
+            </Reveal>
+            <Reveal className="md:col-span-6 md:col-start-7 relative aspect-[4/5] overflow-hidden group order-1 md:order-2">
+              <img src={kmsImg} alt="Patterned blue carpet in a living room" className="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async" />
+            </Reveal>
           </div>
         </div>
       </div>

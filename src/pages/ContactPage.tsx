@@ -10,9 +10,9 @@ export const ContactPage = () => {
                 title="Contact Carpetologist | Carpet Showroom Ernakulam & Muvattupuzha"
                 description="Get in touch with Carpetologist (KMS Traders). Visit our premium carpet showroom in Muvattupuzha, Ernakulam. WhatsApp us at +91 7558077632 for enquiries."
             />
-            <div className="bg-white min-h-screen">
+            <div className="min-h-screen">
                 <ContactSection />
-                <Showroom />
+                <Showroom hideHeader />
             </div>
         </PageTransition>
     );

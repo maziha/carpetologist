@@ -1,153 +1,91 @@
-import { motion } from 'framer-motion';
-import { Sparkles, HandMetal, Award } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Reveal } from './ui/Reveal';
 
-// Import local image for About section
 import aboutImg from '../assets/images/IMG_20260201_151203.jpg';
+import detailImg from '../assets/images/IMG_20260201_151239.jpg';
 
 interface AboutProps {
   hideHeader?: boolean;
 }
 
+const origins = ['Anatolia', 'Isfahan', 'Kashan', 'Tabriz', 'Heriz', 'Jaipur', 'Kerala'];
+
+const craft = [
+  {
+    title: 'Authentic heritage',
+    text: 'Every carpet carries the motifs of the loom it came from. We trace each piece to its region, so you know the story you are bringing home.',
+  },
+  {
+    title: 'Sourced worldwide',
+    text: 'Master weavers, natural fibres and organic dyes. We work with makers across Turkey, Persia and India who still do it the slow way.',
+  },
+  {
+    title: 'Designed to live with',
+    text: 'From a 200-knot silk medallion to a quiet contemporary weave, we help you choose the carpet that finishes the room, not one that merely covers it.',
+  },
+];
+
 export const About = ({ hideHeader = false }: AboutProps) => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8 }
-    }
-  };
-
-  const features = [
-    {
-      icon: Sparkles,
-      title: 'Authentic Heritage',
-      description: 'Every carpet tells a story of Turkish craftsmanship passed down through generations.',
-    },
-    {
-      icon: HandMetal,
-      title: 'Global Collections',
-      description: 'Meticulously sourced from skilled artisans using time-honored techniques and natural materials.',
-    },
-    {
-      icon: Award,
-      title: 'Luxury Design',
-      description: 'Curated collections that elevate interiors with timeless elegance and artistic expression.',
-    },
-  ];
-
   return (
-    <section id="about" className="relative bg-white py-20 md:py-40 overflow-hidden">
-      {/* Background Decorative Element */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-amber-500/5 blur-[120px] -z-10" />
-
-      <div className="max-w-7xl mx-auto px-6">
-        {!hideHeader && (
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className="text-center mb-32"
-          >
-            <p className="text-[10px] tracking-[0.6em] text-amber-600 uppercase mb-6">Discovery</p>
-            <h2 className="text-4xl sm:text-6xl md:text-7xl font-serif text-neutral-900 mb-10 italic tracking-tight">
-              Art of Carpetology
-            </h2>
-            <div className="h-px w-24 mx-auto bg-gradient-to-r from-transparent via-amber-600/30 to-transparent mb-10" />
-            <p className="text-lg md:text-xl text-neutral-600 max-w-3xl mx-auto leading-[1.8] font-light font-sans">
-              At Carpetologist, we believe that a carpet is more than a floor covering—it is a
-              canvas of culture, a testament to artistry, and a bridge between heritage and
-              contemporary living.
-            </p>
-          </motion.div>
-        )}
-
-        <div className="grid md:grid-cols-2 gap-16 md:gap-32 items-center mb-24 md:mb-48">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.2 }}
-            className="relative"
-          >
-            <div className="relative h-[400px] md:h-[700px] overflow-hidden rounded-2xl">
-              <img
-                src={aboutImg}
-                alt="Carpet detail"
-                className="w-full h-full object-cover grayscale-[0.3] hover:grayscale-0 transition-all duration-1000"
-                loading="lazy"
-                decoding="async"
-              />
-              <div className="absolute inset-0 bg-neutral-900/5" />
-            </div>
-            {/* Artistic border overlay */}
-            <div className="absolute -inset-4 border border-amber-600/20 translate-x-8 translate-y-8 -z-10 rounded-2xl" />
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.3 }}
-            className="space-y-12"
-          >
-            <h3 className="text-3xl md:text-5xl font-serif text-neutral-900 italic tracking-tight">Our Philosophy</h3>
-            <div className="space-y-8 text-neutral-600 font-light font-sans leading-[1.9] text-lg">
+    <>
+      <section id="about" className="relative text-ink py-24 md:py-40 overflow-hidden">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12 grid md:grid-cols-12 gap-14 md:gap-8 items-center">
+          <div className="md:col-span-6 md:pr-8">
+            {!hideHeader && (
+              <Reveal as="h2" className="display-lg font-light">
+                The art of carpetology
+              </Reveal>
+            )}
+            <Reveal delay={0.1} className="mt-8 md:mt-10 space-y-6 text-lg leading-relaxed text-ink/80 max-w-xl">
               <p>
-                Founded on a passion for preserving traditional weaving arts while embracing modern
-                design sensibilities, Carpetologist sources the finest materials and partners with
-                master weavers across Turkey.
+                A carpet is more than a floor covering. It is a canvas of culture, a testament to artistry and a bridge between heritage and the way you live now.
               </p>
               <p>
-                Each piece in our collection represents months of dedicated craftsmanship, where
-                natural fibers, organic dyes, and intricate patterns come together to create
-                functional art.
+                Carpetologist was founded on a passion for preserving traditional weaving while embracing modern design. We source the finest materials and partner with master weavers, so each piece in the collection represents months of dedicated craft: natural fibres, organic dyes and patterns that function as art.
               </p>
-              <div className="pt-8">
-                <button className="group relative px-10 py-5 overflow-hidden">
-                  <span className="relative z-10 text-[10px] tracking-[0.4em] uppercase text-neutral-900 transition-colors duration-500 group-hover:text-white">Request Private Selection</span>
-                  <div className="absolute inset-0 border border-neutral-900/20 group-hover:bg-neutral-900 transition-all duration-500" />
-                </button>
-              </div>
-            </div>
-          </motion.div>
+            </Reveal>
+            <Reveal delay={0.2} className="mt-10 flex flex-wrap gap-3">
+              <Link to="/contact" className="btn btn-oxblood">Request a private selection</Link>
+              <Link to="/gallery" className="btn btn-ghost-dark">See the gallery</Link>
+            </Reveal>
+          </div>
+
+          <div className="md:col-span-6 relative">
+            <Reveal className="relative aspect-[4/5] md:aspect-[5/6] overflow-hidden">
+              <img src={aboutImg} alt="Cream and burgundy floral carpet hung in a classical interior" className="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async" />
+            </Reveal>
+            <Reveal delay={0.25} className="hidden md:block absolute -left-16 -bottom-14 w-[38%] aspect-[3/4] overflow-hidden bg-[#faf7f2] p-3 shadow-[0_24px_40px_-22px_rgba(60,45,30,0.5)]">
+              <img src={detailImg} alt="Red carpet laid in a traditional drawing room" className="w-full h-full object-cover" loading="lazy" decoding="async" />
+            </Reveal>
+          </div>
         </div>
+      </section>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid md:grid-cols-3 gap-8"
-        >
-          {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              className="group p-12 bg-stone-50 border border-stone-100 backdrop-blur-sm hover:bg-white hover:border-amber-200 transition-all duration-700 shadow-sm"
-            >
-              <div className="mb-8 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700">
-                <feature.icon className="w-12 h-12 text-amber-600" strokeWidth={1} />
-              </div>
-              <h4 className="text-2xl font-serif text-neutral-900 italic mb-4 tracking-tight">{feature.title}</h4>
-              <p className="text-neutral-500 group-hover:text-neutral-600 font-light font-sans text-sm leading-relaxed transition-colors duration-500">
-                {feature.description}
-              </p>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-    </section>
+      <section className="py-16 md:py-24" aria-label="Where our carpets come from">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12">
+          <div className="rug px-10 py-12 md:px-20 md:py-16 text-center">
+            <p className="font-display italic font-light text-brass-light text-[clamp(1.4rem,3.5vw,3.4rem)] leading-tight">
+              {origins.join(" · ")}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="floor floor-warm py-24 md:py-40">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12">
+          <Reveal as="h2" className="display-md font-light text-ink max-w-3xl">
+            What goes into every carpet we show
+          </Reveal>
+          <div className="mt-16 md:mt-24 space-y-14 md:space-y-20">
+            {craft.map((c, i) => (
+              <Reveal key={c.title} delay={0.05 * i} className="grid md:grid-cols-12 gap-4 md:gap-8 items-baseline">
+                <h3 className="md:col-span-6 font-display italic font-light text-oxblood text-[clamp(2.25rem,5vw,4.5rem)] leading-none">{c.title}</h3>
+                <p className="md:col-span-5 md:col-start-8 text-lg text-ink/80 leading-relaxed">{c.text}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
   );
 };

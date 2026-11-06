@@ -1,8 +1,8 @@
-import { useRef, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { PageTransition } from '../components/ui/PageTransition';
 import { Check, Layers, Ruler, Grid3X3, Mail } from 'lucide-react';
-import { Navigation } from '../components/Navigation';
+import { Reveal } from '../components/ui/Reveal';
 import SEO from '../components/ui/SEO';
 
 // Using the Horizon image from assets
@@ -21,9 +21,6 @@ import sMatImg from '../assets/images/SMat.jpg';
 const BUSINESS_EMAIL = 'horizonventuresmvpa@gmail.com';
 
 export const HorizonPage = () => {
-    const containerRef = useRef(null);
-    const { scrollYProgress } = useScroll({ target: containerRef });
-    const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
 
     const [formData, setFormData] = useState({
         name: '',
@@ -118,12 +115,10 @@ export const HorizonPage = () => {
                 title="Artificial Grass & PVC Mats Kerala | Horizon Ventures Muvattupuzha"
                 description="Best artificial grass and PVC mat showroom in Ernakulam. Horizon Ventures (KMS Traders) provides UV resistant, pet-friendly turf and durable floor mats in Kerala."
             />
-            <div className="bg-neutral-900 min-h-screen text-white">
-                <Navigation />
-
+            <div className="min-h-screen text-ink">
                 {/* Hero */}
-                <div ref={containerRef} className="relative h-[80vh] overflow-hidden">
-                    <motion.div style={{ y }} className="absolute inset-0">
+                <div className="relative h-[88vh] min-h-[560px] overflow-hidden">
+                    <div className="absolute inset-0">
                         <img
                             src={horizonImg}
                             alt="Horizon Ventures Artificial Grass and PVC Mat Showroom Kerala"
@@ -131,183 +126,145 @@ export const HorizonPage = () => {
                             fetchPriority="high"
                             decoding="async"
                         />
-                        <div className="absolute inset-0 bg-black/40" />
-                    </motion.div>
+                        <div className="absolute inset-0 bg-ink/55" />
+                    </div>
 
-                    <div className="absolute inset-0 flex items-center justify-center p-6">
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 1 }}
-                            className="text-center space-y-6"
-                        >
-                            <span className="text-amber-500 uppercase tracking-[0.5em] text-xs font-semibold">Horizon Ventures</span>
-                            <h1 className="text-6xl md:text-8xl font-serif italic tracking-tighter">Evergreen Luxury</h1>
-                            <p className="max-w-xl mx-auto text-neutral-300 font-light text-lg leading-relaxed">
-                                Premium artificial grass and PVC mat solutions for modern spaces.
-                            </p>
-                        </motion.div>
+                    <div className="absolute inset-0 flex items-end">
+                        <div className="max-w-[1440px] w-full mx-auto px-6 md:px-12 pb-16 md:pb-24">
+                            <motion.h1
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.7 }}
+                                className="display-xl font-light max-w-5xl text-ivory"
+                            >
+                                Evergreen luxury.
+                            </motion.h1>
+                            <motion.p
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.7, delay: 0.1 }}
+                                className="mt-6 max-w-xl text-lg text-ivory/80 leading-relaxed"
+                            >
+                                Horizon Ventures: premium artificial grass and PVC mat solutions for modern spaces.
+                            </motion.p>
+                        </div>
                     </div>
                 </div>
 
                 {/* Grass Products Section */}
-                <div className="bg-neutral-950 py-32">
-                    <div className="max-w-7xl mx-auto px-6">
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="text-center mb-20"
-                        >
-                            <p className="text-[10px] tracking-[0.5em] text-amber-500 uppercase mb-6">Our Range</p>
-                            <h2 className="text-5xl md:text-6xl font-serif italic mb-6">Artificial Grass</h2>
-                            <p className="text-neutral-500 max-w-2xl mx-auto">
-                                Four grades of premium artificial turf, each engineered for specific needs and environments.
-                            </p>
-                        </motion.div>
+                <div className="py-24 md:py-40">
+                    <div className="max-w-[1440px] mx-auto px-6 md:px-12">
+                        <div className="grid md:grid-cols-12 gap-6 items-end mb-14 md:mb-20">
+                            <Reveal as="h2" className="md:col-span-7 display-lg font-light">Artificial grass</Reveal>
+                            <Reveal delay={0.1} className="md:col-span-4 md:col-start-9 text-lg text-ink/75 leading-relaxed">
+                                Four grades of premium turf, each engineered for a specific need and environment.
+                            </Reveal>
+                        </div>
 
-                        <div className="grid md:grid-cols-2 gap-8">
+                        <div className="grid md:grid-cols-2 gap-4 md:gap-6">
                             {grassProducts.map((product, index) => (
-                                <motion.div
-                                    key={product.id}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
-                                    className="group relative overflow-hidden rounded-2xl"
-                                >
-                                    <div className="relative h-[400px] md:h-[500px] overflow-hidden">
+                                <Reveal key={product.id} delay={0.06 * index} className="group relative overflow-hidden bg-ink-soft">
+                                    <div className="relative h-[420px] md:h-[540px] overflow-hidden">
                                         <img
                                             src={product.image}
                                             alt={`${product.name} - Premium Artificial Grass Kerala`}
-                                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                            className="w-full h-full object-cover"
                                             loading="lazy"
                                             decoding="async"
                                         />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent" />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
                                         {'badge' in product && product.badge && (
-                                            <div className="absolute top-6 right-6 bg-amber-500 text-black px-4 py-2">
-                                                <span className="text-[10px] tracking-[0.2em] uppercase font-semibold">{product.badge}</span>
+                                            <div className="absolute top-5 left-5 bg-brass text-ink px-4 py-1.5 text-sm font-medium">
+                                                {product.badge}
                                             </div>
                                         )}
                                     </div>
-                                    <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-10">
-                                        <h3 className="text-2xl md:text-3xl font-serif italic text-white mb-6 drop-shadow-lg">{product.name}</h3>
-                                        <div className="flex flex-wrap gap-6 mb-6">
-                                            <div className="flex items-center gap-3 text-white/90">
-                                                <Ruler size={16} className="text-amber-500" />
-                                                <span className="text-sm">{product.height}</span>
-                                            </div>
-                                            <div className="flex items-center gap-3 text-white/90">
-                                                <Layers size={16} className="text-amber-500" />
-                                                <span className="text-sm">{product.layers}</span>
-                                            </div>
-                                            <div className="flex items-center gap-3 text-white/90">
-                                                <Grid3X3 size={16} className="text-amber-500" />
-                                                <span className="text-sm">{product.stitches}</span>
-                                            </div>
+                                    <div className="absolute inset-0 flex flex-col justify-end p-7 md:p-10">
+                                        <h3 className="font-display font-light text-3xl md:text-4xl leading-tight mb-5">{product.name}</h3>
+                                        <div className="flex flex-wrap gap-x-6 gap-y-2 mb-5 text-ivory/90 text-sm">
+                                            <span className="flex items-center gap-2"><Ruler size={16} className="text-brass" />{product.height}</span>
+                                            <span className="flex items-center gap-2"><Layers size={16} className="text-brass" />{product.layers}</span>
+                                            <span className="flex items-center gap-2"><Grid3X3 size={16} className="text-brass" />{product.stitches}</span>
                                         </div>
-                                        <p className="text-white/70 text-base leading-relaxed max-w-md">
-                                            {product.description}
-                                        </p>
+                                        <p className="text-ivory/75 leading-relaxed max-w-md">{product.description}</p>
                                     </div>
-                                    <div className="absolute inset-0 border-2 border-white/5 group-hover:border-amber-500/30 transition-colors duration-500 rounded-2xl" />
-                                </motion.div>
+                                </Reveal>
                             ))}
                         </div>
                     </div>
                 </div>
 
                 {/* PVC Mats */}
-                <div className="bg-neutral-900 py-32">
-                    <div className="max-w-7xl mx-auto px-6">
-                        <div className="grid md:grid-cols-2 gap-12">
-                            <motion.div
-                                initial={{ opacity: 0, x: -30 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                className="group relative overflow-hidden rounded-2xl"
-                            >
-                                <div className="relative h-[300px] overflow-hidden rounded-t-2xl">
-                                    <img
-                                        src={cushionMatImg}
-                                        alt="Durable Cushion Mats Kerala - Single Colour PVC"
-                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                        loading="lazy"
-                                        decoding="async"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/60 to-transparent" />
+                <div className="floor floor-warm py-24 md:py-40">
+                    <div className="max-w-[1440px] mx-auto px-6 md:px-12">
+                        <Reveal as="h2" className="display-md font-light max-w-3xl mb-14 md:mb-20">Mats built for doorways, decks and workshops</Reveal>
+                        <div className="grid md:grid-cols-2 gap-4 md:gap-6">
+                            <Reveal className="bg-[#faf7f2] shadow-[0_26px_36px_-26px_rgba(60,45,30,0.5)]">
+                                <div className="relative h-[300px] overflow-hidden">
+                                    <img src={cushionMatImg} alt="Durable Cushion Mats Kerala - Single Colour PVC" className="w-full h-full object-cover" loading="lazy" decoding="async" />
                                 </div>
-                                <div className="bg-neutral-800/50 p-10 border border-white/5">
-                                    <h3 className="text-2xl font-serif italic mb-2">Cushion Mats</h3>
-                                    <p className="text-amber-500 text-sm uppercase tracking-wider mb-8">Single Colour</p>
-                                    <div className="flex flex-wrap gap-3">
+                                <div className="p-8 md:p-10">
+                                    <h3 className="font-display font-light text-4xl">Cushion mats</h3>
+                                    <p className="text-oxblood mt-1 mb-7">Single colour · {singleColourMats.thickness.join(' or ')}</p>
+                                    <ul className="flex flex-wrap gap-2">
                                         {singleColourMats.colors.map(color => (
-                                            <div key={color} className="flex items-center gap-2 px-4 py-2 bg-neutral-700/30 border border-white/10">
-                                                <div className="w-4 h-4 rounded-full border border-white/20" style={{ backgroundColor: color.toLowerCase() === 'maroon' ? '#800000' : color.toLowerCase() }} />
-                                                <span className="text-sm text-white">{color}</span>
-                                            </div>
+                                            <li key={color} className="flex items-center gap-2 px-4 py-2 bg-[#ece5d8] text-sm">
+                                                <span className="w-3.5 h-3.5 rounded-full ring-1 ring-ink/25" style={{ backgroundColor: color.toLowerCase() === 'maroon' ? '#800000' : color.toLowerCase() }} />
+                                                {color}
+                                            </li>
                                         ))}
-                                    </div>
+                                    </ul>
                                 </div>
-                            </motion.div>
+                            </Reveal>
 
-                            <motion.div
-                                initial={{ opacity: 0, x: 30 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                className="group relative overflow-hidden rounded-2xl"
-                            >
-                                <div className="relative h-[300px] overflow-hidden rounded-t-2xl">
-                                    <img
-                                        src={sMatImg}
-                                        alt="S-Mats Ernakulam - Double Colour Drainage Mats"
-                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                        loading="lazy"
-                                        decoding="async"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/60 to-transparent" />
+                            <Reveal delay={0.1} className="bg-[#faf7f2] shadow-[0_26px_36px_-26px_rgba(60,45,30,0.5)]">
+                                <div className="relative h-[300px] overflow-hidden">
+                                    <img src={sMatImg} alt="S-Mats Ernakulam - Double Colour Drainage Mats" className="w-full h-full object-cover" loading="lazy" decoding="async" />
                                 </div>
-                                <div className="bg-neutral-800/50 p-10 border border-white/5">
-                                    <h3 className="text-2xl font-serif italic mb-2">S Mats</h3>
-                                    <p className="text-amber-500 text-sm uppercase tracking-wider mb-8">Double Colour</p>
-                                    <div className="flex flex-wrap gap-3">
+                                <div className="p-8 md:p-10">
+                                    <h3 className="font-display font-light text-4xl">S mats</h3>
+                                    <p className="text-oxblood mt-1 mb-7">Double colour · {doubleColourMats.thickness}</p>
+                                    <ul className="flex flex-wrap gap-2">
                                         {doubleColourMats.colors.map(combo => (
-                                            <div key={combo} className="flex items-center gap-2 px-4 py-2 bg-neutral-700/30 border border-white/10">
-                                                <span className="text-sm text-white">{combo}</span>
-                                            </div>
+                                            <li key={combo} className="px-4 py-2 bg-[#ece5d8] text-sm">{combo}</li>
                                         ))}
-                                    </div>
+                                    </ul>
                                 </div>
-                            </motion.div>
+                            </Reveal>
                         </div>
                     </div>
                 </div>
 
                 {/* Consultation */}
-                <div className="bg-neutral-950 py-32">
-                    <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-24 items-center">
-                        <div className="space-y-12">
-                            <h2 className="text-4xl font-serif italic">Beyond Nature</h2>
-                            <div className="grid grid-cols-1 gap-6">
-                                {features.map((feature, i) => (
-                                    <div key={i} className="flex items-center gap-4 group">
-                                        <Check size={14} className="text-amber-500" />
-                                        <span className="text-neutral-300 font-light">{feature}</span>
-                                    </div>
+                <div className="py-24 md:py-40">
+                    <div className="max-w-[1440px] mx-auto px-6 md:px-12 grid md:grid-cols-12 gap-14 md:gap-8 items-start">
+                        <div className="md:col-span-6 space-y-10">
+                            <Reveal as="h2" className="display-md font-light">Beyond nature</Reveal>
+                            <ul className="space-y-4">
+                                {features.map((feature) => (
+                                    <li key={feature} className="flex items-center gap-4 text-xl font-display">
+                                        <Check size={18} className="text-oxblood shrink-0" />
+                                        {feature}
+                                    </li>
                                 ))}
-                            </div>
+                            </ul>
                         </div>
-                        <div className="bg-neutral-800/30 p-12 border border-white/5 space-y-8">
-                            <h3 className="text-2xl font-serif">Request Consultation</h3>
-                            <div className="space-y-6">
-                                <input type="text" name="name" placeholder="Name *" value={formData.name} onChange={handleChange} className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:border-amber-500 outline-none transition-colors" />
-                                <input type="email" name="email" placeholder="Email *" value={formData.email} onChange={handleChange} className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:border-amber-500 outline-none transition-colors" />
-                                <button onClick={handleEmailClick} disabled={!isFormValid} className={`w-full py-4 flex items-center justify-center gap-2 uppercase tracking-[0.2em] text-xs transition-all ${isFormValid ? 'bg-white text-black hover:bg-amber-500 hover:text-white pointer-events-auto' : 'bg-neutral-700 text-neutral-500 pointer-events-none'}`}>
-                                    <Mail size={14} /> Send via Email
+                        <Reveal delay={0.1} className="md:col-span-5 md:col-start-8 rug p-12 md:p-16 my-5 space-y-6">
+                            <h3 className="font-display font-light text-4xl">Request a consultation</h3>
+                            <div className="space-y-4">
+                                <div>
+                                    <label htmlFor="hz-name" className="block text-sm text-ivory/70 mb-2">Name *</label>
+                                    <input id="hz-name" type="text" name="name" value={formData.name} onChange={handleChange} autoComplete="name" className="w-full bg-white/5 px-4 py-3.5 text-ivory focus:bg-white/10 focus:ring-2 focus:ring-brass outline-none transition-colors" />
+                                </div>
+                                <div>
+                                    <label htmlFor="hz-email" className="block text-sm text-ivory/70 mb-2">Email *</label>
+                                    <input id="hz-email" type="email" name="email" value={formData.email} onChange={handleChange} autoComplete="email" className="w-full bg-white/5 px-4 py-3.5 text-ivory focus:bg-white/10 focus:ring-2 focus:ring-brass outline-none transition-colors" />
+                                </div>
+                                <button onClick={handleEmailClick} disabled={!isFormValid} className={`btn w-full ${isFormValid ? 'btn-brass' : 'bg-white/10 text-ivory/40 cursor-not-allowed'}`}>
+                                    <Mail size={16} /> Send via email
                                 </button>
                             </div>
-                        </div>
+                        </Reveal>
                     </div>
                 </div>
             </div>

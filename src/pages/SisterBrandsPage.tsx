@@ -1,8 +1,18 @@
 import { SisterOrganizations } from '../components/SisterOrganizations';
-
+import { Invitation } from '../components/Invitation';
 import { PageTransition } from '../components/ui/PageTransition';
-import { motion } from 'framer-motion';
+import { PageHero } from '../components/ui/PageHero';
+import { Reveal } from '../components/ui/Reveal';
 import SEO from '../components/ui/SEO';
+
+import heroImg from '../assets/images/IMG_20260201_150545.jpg';
+
+const gallery = [
+    { src: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800', alt: 'Luxury living room interior', cls: 'aspect-[4/3]' },
+    { src: 'https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=800', alt: 'Landscaped garden lawn', cls: 'aspect-[3/4] md:mt-16' },
+    { src: 'https://images.pexels.com/photos/6045093/pexels-photo-6045093.jpeg?auto=compress&cs=tinysrgb&w=800', alt: 'Close view of woven floor texture', cls: 'aspect-[3/4]' },
+    { src: 'https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=800', alt: 'Boutique interior with warm lighting', cls: 'aspect-[4/3] md:mt-16' },
+];
 
 export const SisterBrandsPage = () => {
     return (
@@ -11,92 +21,32 @@ export const SisterBrandsPage = () => {
                 title="KMS Traders Group | Luxury Living Solutions Kerala"
                 description="KMS Traders (Muvattupuzha) is the parent organization of Carpetologist, Horizon Ventures, and KMS Carpets. Expert flooring and landscaping solutions in Ernakulam."
             />
-            <div className="bg-stone-50 min-h-screen">
-                <SisterOrganizations />
+            <PageHero
+                title="Three brands, one ground."
+                lead="Carpetologist, Horizon Ventures and KMS Carpets share a single promise: beautiful, durable surfaces for every space, indoors and out."
+                image={heroImg}
+                imageAlt="Textured beige carpet in a calm living room"
+            />
+            <SisterOrganizations hideHeader />
 
-                <div className="bg-neutral-900 py-40 text-white">
-                    <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-32 items-center">
-                        <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                        >
-                            <p className="text-amber-500 uppercase tracking-[0.4em] text-[10px] mb-6">KMS Traders Group</p>
-                            <h2 className="text-5xl font-serif italic mb-10 tracking-tight">Integrated Living</h2>
-                            <p className="text-neutral-400 leading-relaxed font-light mb-12 text-lg">
-                                Based in Muvattupuzha, Ernakulam, Kerala — the KMS Traders group brings together Carpetologist, Horizon Ventures, and KMS Carpets, providing a holistic approach to luxury ground coverings.
-                            </p>
-
-                        </motion.div>
-
-                        <div className="grid grid-cols-2 gap-6">
-                            <div className="space-y-6">
-                                <motion.div
-                                    initial={{ opacity: 0, scale: 0.9 }}
-                                    whileInView={{ opacity: 1, scale: 1 }}
-                                    viewport={{ once: true }}
-                                    className="h-48 rounded-2xl border border-white/5 overflow-hidden"
-                                >
-                                    <img
-                                        src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800"
-                                        className="w-full h-full object-cover grayscale-[0.5] hover:grayscale-0 transition-all duration-[2s]"
-                                        alt="Luxury Living"
-                                        loading="lazy"
-                                        decoding="async"
-                                    />
-                                </motion.div>
-                                <motion.div
-                                    initial={{ opacity: 0, scale: 0.9 }}
-                                    whileInView={{ opacity: 1, scale: 1 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: 0.2 }}
-                                    className="h-72 rounded-2xl border border-white/5 overflow-hidden"
-                                >
-                                    <img
-                                        src="https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=800"
-                                        className="w-full h-full object-cover grayscale-[0.5] hover:grayscale-0 transition-all duration-[2s]"
-                                        alt="Horizon Landscape"
-                                        loading="lazy"
-                                        decoding="async"
-                                    />
-                                </motion.div>
-                            </div>
-                            <div className="space-y-6 pt-16">
-                                <motion.div
-                                    initial={{ opacity: 0, scale: 0.9 }}
-                                    whileInView={{ opacity: 1, scale: 1 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: 0.1 }}
-                                    className="h-72 rounded-2xl border border-white/5 overflow-hidden"
-                                >
-                                    <img
-                                        src="https://images.pexels.com/photos/6045093/pexels-photo-6045093.jpeg?auto=compress&cs=tinysrgb&w=800"
-                                        className="w-full h-full object-cover grayscale-[0.5] hover:grayscale-0 transition-all duration-[2s]"
-                                        alt="KMS Texture"
-                                        loading="lazy"
-                                        decoding="async"
-                                    />
-                                </motion.div>
-                                <motion.div
-                                    initial={{ opacity: 0, scale: 0.9 }}
-                                    whileInView={{ opacity: 1, scale: 1 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: 0.3 }}
-                                    className="h-48 rounded-2xl border border-white/5 overflow-hidden"
-                                >
-                                    <img
-                                        src="https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=800"
-                                        className="w-full h-full object-cover grayscale-[0.5] hover:grayscale-0 transition-all duration-[2s]"
-                                        alt="Boutique Interior"
-                                        loading="lazy"
-                                        decoding="async"
-                                    />
-                                </motion.div>
-                            </div>
-                        </div>
+            <section className="floor floor-warm text-ink py-24 md:py-40">
+                <div className="max-w-[1440px] mx-auto px-6 md:px-12 grid md:grid-cols-12 gap-14 md:gap-8 items-center">
+                    <div className="md:col-span-5">
+                        <Reveal as="h2" className="display-md font-light">Integrated living</Reveal>
+                        <Reveal delay={0.1} className="mt-8 text-lg text-ink/80 leading-relaxed max-w-md">
+                            Based in Muvattupuzha, Ernakulam, Kerala, the KMS Traders group brings Carpetologist, Horizon Ventures and KMS Carpets together for a holistic approach to luxury ground coverings.
+                        </Reveal>
+                    </div>
+                    <div className="md:col-span-6 md:col-start-7 grid grid-cols-2 gap-4 md:gap-6">
+                        {gallery.map((g, i) => (
+                            <Reveal key={g.src} delay={0.08 * i} className={`${g.cls} overflow-hidden relative bg-ivory-deep`}>
+                                <img src={g.src} alt={g.alt} className="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async" />
+                            </Reveal>
+                        ))}
                     </div>
                 </div>
-            </div>
+            </section>
+            <Invitation />
         </PageTransition>
     );
 };

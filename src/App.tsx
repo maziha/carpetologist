@@ -25,7 +25,7 @@ const AnimatedRoutes = () => {
 
   return (
     <AnimatePresence mode="wait">
-      <Suspense fallback={<div className="min-h-screen bg-neutral-950 flex justify-center items-center"><div className="w-8 h-8 border-t-2 border-amber-500 rounded-full animate-spin"></div></div>}>
+      <Suspense fallback={<div className="min-h-screen floor flex justify-center items-center"><div className="w-8 h-8 border-t-2 border-brass rounded-full animate-spin"></div></div>}>
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />
           <Route path="/collections" element={<CollectionsPage />} />
@@ -45,7 +45,7 @@ function App() {
     <Router>
       <StructuredData />
       <ScrollToTop />
-      <div className="min-h-screen bg-neutral-950 text-neutral-200 selection:bg-amber-500/30 overflow-x-hidden w-full relative">
+      <div className="min-h-screen floor text-ink selection:bg-brass/30 overflow-x-clip w-full relative">
         <CustomCursor />
         <Navigation />
         {/* Floating Widgets */}

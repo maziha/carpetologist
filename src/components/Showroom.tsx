@@ -1,10 +1,8 @@
-import { motion } from 'framer-motion';
-import { MapPin, Clock } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Reveal } from './ui/Reveal';
 
-// Import local images from assets/images
 import showroom1 from '../assets/images/IMG_20260201_150254.jpg';
 import showroom2 from '../assets/images/IMG_20260201_150615.jpg';
-import showroomBg from '../assets/images/IMG_20260201_150545.jpg';
 
 interface ShowroomProps {
   hideHeader?: boolean;
@@ -12,125 +10,44 @@ interface ShowroomProps {
 
 export const Showroom = ({ hideHeader = false }: ShowroomProps) => {
   return (
-    <section className="relative bg-stone-50 py-20 md:py-40 overflow-hidden">
-      {/* Dynamic Background */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 0.05 }}
-        transition={{ duration: 2 }}
-        className="absolute inset-0 z-0"
-      >
-        <img
-          src={showroomBg}
-          className="w-full h-full object-cover"
-          alt="Showroom background"
-          loading="lazy"
-          decoding="async"
-        />
-      </motion.div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
+    <section className="relative floor floor-warm text-ink py-24 md:py-40 overflow-hidden">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-12">
         {!hideHeader && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className="text-center mb-32"
-          >
-            <p className="text-[10px] tracking-[0.6em] text-amber-600 uppercase mb-6">
-              The Gallery
-            </p>
-            <h2 className="text-4xl sm:text-6xl md:text-8xl font-serif text-neutral-900 mb-10 italic tracking-tighter">
-              An Immersion in Art
-            </h2>
-            <div className="h-px w-32 mx-auto bg-gradient-to-r from-transparent via-amber-600/50 to-transparent" />
-          </motion.div>
+          <Reveal as="h2" className="display-lg font-light max-w-4xl">
+            An hour in the showroom changes how you see a room
+          </Reveal>
         )}
 
-        <div className="grid md:grid-cols-2 gap-12 md:gap-24">
-          <div className="grid grid-cols-2 gap-4 md:gap-8 h-fit">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="relative h-[300px] md:h-[450px] shadow-2xl overflow-hidden mt-10 md:mt-20 rounded-2xl"
-            >
-              <img
-                src={showroom1}
-                alt="Showroom Gallery Interior"
-                className="w-full h-full object-cover hover:scale-110 transition-transform duration-[2s]"
-                loading="lazy"
-                decoding="async"
-              />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: -30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative h-[300px] md:h-[450px] shadow-2xl overflow-hidden rounded-2xl"
-            >
-              <img
-                src={showroom2}
-                alt="Finest Carpet Selection Showroom"
-                className="w-full h-full object-cover hover:scale-110 transition-transform duration-[2s]"
-                loading="lazy"
-                decoding="async"
-              />
-            </motion.div>
+        <div className="mt-14 md:mt-24 grid md:grid-cols-12 gap-8 md:gap-10 items-center">
+          <div className="md:col-span-6 grid grid-cols-2 gap-4 md:gap-6 items-start">
+            <Reveal className="relative aspect-[914/1600] overflow-hidden bg-[#faf7f2] p-2.5 shadow-[0_26px_36px_-24px_rgba(60,45,30,0.55)]">
+              <img src={showroom1} alt="A greige geometric carpet in a sunlit showroom setting" className="absolute inset-2.5 w-[calc(100%-20px)] h-[calc(100%-20px)] object-cover" loading="lazy" decoding="async" />
+            </Reveal>
+            <Reveal delay={0.1} className="relative aspect-[914/1600] overflow-hidden bg-[#faf7f2] p-2.5 shadow-[0_26px_36px_-24px_rgba(60,45,30,0.55)] mt-12 md:mt-24">
+              <img src={showroom2} alt="Framed contemporary rug hung above an oak console" className="absolute inset-2.5 w-[calc(100%-20px)] h-[calc(100%-20px)] object-cover" loading="lazy" decoding="async" />
+            </Reveal>
           </div>
 
-          <div className="space-y-16 flex flex-col justify-center">
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="bg-white p-8 md:p-16 border border-stone-200 relative group shadow-sm"
-            >
-              <div className="absolute top-0 right-0 p-4 md:p-8">
-                <span className="text-[8px] tracking-[0.5em] text-amber-600/40 uppercase">A-01</span>
+          <Reveal delay={0.1} className="md:col-span-6 rug p-12 md:p-20 my-5">
+            <h3 className="font-display italic font-light text-4xl md:text-5xl leading-none text-brass-light">The boutique experience</h3>
+            <p className="mt-6 text-lg text-ivory/75 leading-relaxed max-w-xl">
+              Our showroom is a curated space where time slows down. See the full inventory under museum-quality lighting, guided by people who know the history of every knot.
+            </p>
+            <dl className="mt-10 grid sm:grid-cols-2 gap-8">
+              <div>
+                <dt className="text-sm text-brass">Where</dt>
+                <dd className="mt-1 text-xl font-display">Muvattupuzha, Ernakulam</dd>
               </div>
-              <h3 className="text-2xl md:text-3xl font-serif text-neutral-900 mb-10 italic tracking-wide">The Boutique Experience</h3>
-              <p className="text-neutral-600 leading-[2] text-sm font-light font-sans mb-10">
-                Our showroom is a curated space where time slows down. Discover our full inventory under museum-quality lighting, guided by experts who understand the history of every knot.
-              </p>
-              <div className="flex items-center gap-10">
-                <div className="flex flex-col gap-2">
-                  <span className="text-amber-600 text-xs font-serif italic">Location</span>
-                  <span className="text-neutral-400 text-[10px] tracking-widest uppercase">Muvattupuzha, Ernakulam</span>
-                </div>
-                <div className="h-10 w-px bg-stone-200" />
-                <div className="flex flex-col gap-2">
-                  <span className="text-amber-600 text-xs font-serif italic">Availability</span>
-                  <span className="text-neutral-400 text-[10px] tracking-widest uppercase">By Appointment</span>
-                </div>
+              <div>
+                <dt className="text-sm text-brass">When</dt>
+                <dd className="mt-1 text-xl font-display">By appointment</dd>
               </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8"
-            >
-              <div className="flex items-center gap-6 group">
-                <div className="w-12 h-12 rounded-full border border-stone-200 flex items-center justify-center group-hover:border-amber-600/50 transition-colors duration-500">
-                  <MapPin size={18} className="text-amber-600" strokeWidth={1} />
-                </div>
-                <p className="text-[10px] tracking-[0.2em] uppercase text-neutral-500">View Map</p>
-              </div>
-              <div className="flex items-center gap-6 group">
-                <div className="w-12 h-12 rounded-full border border-stone-200 flex items-center justify-center group-hover:border-amber-600/50 transition-colors duration-500">
-                  <Clock size={18} className="text-amber-600" strokeWidth={1} />
-                </div>
-                <p className="text-[10px] tracking-[0.2em] uppercase text-neutral-500">Open Hours</p>
-              </div>
-            </motion.div>
-          </div>
+            </dl>
+            <div className="mt-10 flex flex-wrap gap-3">
+              <Link to="/contact" className="btn btn-brass">Book a viewing</Link>
+              <a href="https://wa.me/917558077632" target="_blank" rel="noreferrer" className="btn btn-ghost-light">Message on WhatsApp</a>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>

@@ -1,7 +1,17 @@
 import { Collections as CollectionsSection } from '../components/Collections';
+import { Invitation } from '../components/Invitation';
 import { PageTransition } from '../components/ui/PageTransition';
-import { motion } from 'framer-motion';
+import { PageHero } from '../components/ui/PageHero';
+import { Reveal } from '../components/ui/Reveal';
 import SEO from '../components/ui/SEO';
+
+import heroImg from '../assets/images/IMG_20260201_151148.jpg';
+
+const promises = [
+    { title: 'Natural by nature', text: 'We favour 100% natural wool, silk and organic vegetable dyes, so a carpet is as kind to the earth as it is beautiful.' },
+    { title: 'Made for your room', text: 'Bring your vision to life with a bespoke piece, cut to your space and tuned to its architectural palette.' },
+    { title: 'Delivered with care', text: 'White-glove delivery and professional installation, arranged for every handpicked piece.' },
+];
 
 export const CollectionsPage = () => {
     return (
@@ -10,48 +20,28 @@ export const CollectionsPage = () => {
                 title="Premium Carpet Collection Kerala | Imported Rugs Ernakulam"
                 description="Explore our exclusive collection of hand-knotted Turkish, Persian, and Silk carpets. Premium quality rugs available at Carpetologist, Muvattupuzha."
             />
-            <div className="bg-neutral-900 min-h-screen">
-                {/* We use the header inside the Collections component for consistency */}
-                <CollectionsSection />
+            <PageHero
+                title="The collection"
+                lead="Four weaving traditions, curated by hand and held in our Muvattupuzha showroom. Pick one to explore."
+                image={heroImg}
+                imageAlt="Crimson Persian carpet hung against a carved plaster wall"
+            />
+            <CollectionsSection hideHeader />
 
-                <div className="max-w-7xl mx-auto px-6 pb-40 grid md:grid-cols-3 gap-16 border-t border-white/5 pt-32">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="space-y-6"
-                    >
-                        <h4 className="text-amber-500 uppercase tracking-widest text-[10px]">Sustainability</h4>
-                        <p className="text-neutral-400 font-light leading-relaxed text-sm">
-                            We use 100% natural wool, silk, and organic vegetable dyes, ensuring our legacy is as kind to the earth as it is beautiful.
-                        </p>
-                    </motion.div>
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.1 }}
-                        className="space-y-6"
-                    >
-                        <h4 className="text-amber-500 uppercase tracking-widest text-[10px]">Custom Commissions</h4>
-                        <p className="text-neutral-400 font-light leading-relaxed text-sm">
-                            Bring your vision to life with a bespoke piece, tailored to your space's specific dimensions and architectural color palette.
-                        </p>
-                    </motion.div>
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                        className="space-y-6"
-                    >
-                        <h4 className="text-amber-500 uppercase tracking-widest text-[10px]">Global Shipping</h4>
-                        <p className="text-neutral-400 font-light leading-relaxed text-sm">
-                            White-glove delivery and professional installation services available worldwide for all our handpicked masterpieces.
-                        </p>
-                    </motion.div>
+            <section className="floor floor-warm text-ink py-24 md:py-40">
+                <div className="max-w-[1440px] mx-auto px-6 md:px-12">
+                    <Reveal as="h2" className="display-md font-light max-w-3xl">How we look after you and your carpet</Reveal>
+                    <div className="mt-16 md:mt-24 space-y-14 md:space-y-20">
+                        {promises.map((p, i) => (
+                            <Reveal key={p.title} delay={0.05 * i} className="grid md:grid-cols-12 gap-4 md:gap-8 items-baseline">
+                                <h3 className="md:col-span-6 font-display italic font-light text-oxblood text-[clamp(2.25rem,5vw,4.5rem)] leading-none">{p.title}</h3>
+                                <p className="md:col-span-5 md:col-start-8 text-lg text-ink/80 leading-relaxed">{p.text}</p>
+                            </Reveal>
+                        ))}
+                    </div>
                 </div>
-            </div>
+            </section>
+            <Invitation />
         </PageTransition>
     );
 };

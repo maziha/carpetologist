@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PageTransition } from '../components/ui/PageTransition';
-import { X, ZoomIn } from 'lucide-react';
+import { X } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 import SEO from '../components/ui/SEO';
+import { Invitation } from '../components/Invitation';
 
 import img1 from '../assets/images/IMG_20260201_151952.jpg';
 import img2 from '../assets/images/IMG_20260201_150136.jpg';
@@ -85,73 +86,63 @@ export const GalleryPage = () => {
                 title="Curated Rug Gallery | Imported Carpet Designs Kerala"
                 description="View our curated gallery of luxury carpets. From Turkish kilims to Persian masterpieces, find the perfect design for your home in Ernakulam."
             />
-            <div className="bg-stone-50 min-h-screen pt-40 pb-32">
-                <div className="max-w-7xl mx-auto px-6">
-                    <div className="text-center mb-20">
-                        <p className="text-[10px] tracking-[0.5em] text-amber-600 uppercase mb-6">
-                            The Collection
+            <div className="min-h-screen pt-36 md:pt-44 pb-24 md:pb-40">
+                <div className="max-w-[1440px] mx-auto px-6 md:px-12">
+                    <div className="grid md:grid-cols-12 gap-8 items-end mb-12 md:mb-16">
+                        <h1 className="md:col-span-8 display-lg font-light text-ink">The curated gallery</h1>
+                        <p className="md:col-span-4 text-lg text-ink/75 leading-relaxed">
+                            {GALLERY_IMAGES.length} carpets shown in real rooms. Filter by tradition and tap any piece to see it larger.
                         </p>
-                        <h2 className="text-5xl md:text-7xl font-serif text-neutral-900 mb-8 italic tracking-tight">
-                            Curated Gallery
-                        </h2>
-                        <div className="h-px w-24 mx-auto bg-amber-600/30 mb-12" />
-
-                        <div className="flex flex-wrap justify-center gap-6 md:gap-12">
-                            {CATEGORIES.map((cat) => (
-                                <button
-                                    key={cat}
-                                    onClick={() => setActiveCategory(cat)}
-                                    className={`text-[10px] tracking-[0.3em] uppercase transition-all duration-500 pb-2 border-b border-transparent ${activeCategory === cat
-                                        ? 'text-amber-600 border-amber-600'
-                                        : 'text-neutral-400 hover:text-neutral-900'
-                                        }`}
-                                >
-                                    {cat}
-                                </button>
-                            ))}
-                        </div>
                     </div>
 
-                    <motion.div
-                        layout
-                        className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8"
-                    >
-                        <AnimatePresence mode="popLayout">
+                    <div className="flex flex-wrap gap-2 md:gap-3 mb-12 md:mb-16" role="tablist" aria-label="Filter by tradition">
+                        {CATEGORIES.map((cat) => (
+                            <button
+                                key={cat}
+                                role="tab"
+                                aria-selected={activeCategory === cat}
+                                onClick={() => setActiveCategory(cat)}
+                                className={`px-6 py-2.5 text-sm transition-colors duration-500 ${activeCategory === cat
+                                    ? 'bg-oxblood text-ivory'
+                                    : 'bg-[#faf7f2] text-ink/70 hover:text-ink shadow-[0_10px_18px_-14px_rgba(60,45,30,0.5)]'
+                                    }`}
+                            >
+                                {cat}
+                            </button>
+                        ))}
+                    </div>
+
+                    <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 md:gap-6">
+                        <AnimatePresence>
                             {filteredImages.map((image) => (
-                                <motion.div
-                                    layout
-                                    initial={{ opacity: 0, scale: 0.9 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0.9 }}
-                                    transition={{ duration: 0.5 }}
+                                <motion.button
+                                    type="button"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    transition={{ duration: 0.3 }}
                                     key={image.id}
-                                    className="break-inside-avoid relative group cursor-pointer"
+                                    className="break-inside-avoid relative group block w-full text-left mb-4 md:mb-6"
                                     onClick={() => setSelectedImage(image)}
+                                    aria-label={`View ${image.title}`}
                                 >
-                                    <div className="relative overflow-hidden bg-neutral-200 rounded-2xl aspect-[16/11] md:aspect-square lg:aspect-[3/4]">
+                                    <div className="relative overflow-hidden bg-[#faf7f2]">
                                         <img
                                             src={image.src}
-                                            alt={image.title}
+                                            alt={`${image.title}, a ${image.category.toLowerCase()} carpet`}
                                             loading="lazy"
                                             decoding="async"
-                                            className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-110"
+                                            className="w-full h-auto block transition-transform duration-[1.5s] ease-out "
                                         />
-                                        <div className="absolute inset-0 bg-neutral-900/0 group-hover:bg-neutral-900/20 transition-all duration-500" />
-
-                                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                                            <div className="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-full">
-                                                <ZoomIn className="text-white w-6 h-6" strokeWidth={1.5} />
-                                            </div>
+                                        <div className="absolute inset-x-0 bottom-0 p-5 pt-16 bg-gradient-to-t from-ink/90 to-transparent translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 transition-all duration-500">
+                                            <p className="font-display text-2xl text-ivory leading-none">{image.title}</p>
+                                            <p className="mt-1 text-sm text-brass-light">{image.category}</p>
                                         </div>
                                     </div>
-                                    <div className="mt-4 flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                                        <span className="text-xs font-serif italic text-neutral-900">{image.title}</span>
-                                        <span className="text-[9px] uppercase tracking-widest text-neutral-400">{image.category}</span>
-                                    </div>
-                                </motion.div>
+                                </motion.button>
                             ))}
                         </AnimatePresence>
-                    </motion.div>
+                    </div>
                 </div>
 
                 <AnimatePresence>
@@ -160,41 +151,42 @@ export const GalleryPage = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            className="fixed inset-0 z-[1001] bg-neutral-950/95 flex items-center justify-center p-6 md:p-12"
+                            role="dialog"
+                            aria-modal="true"
+                            aria-label={selectedImage.title}
+                            className="fixed inset-0 z-[1001] bg-ink/95 flex items-center justify-center p-6 md:p-12"
                             onClick={() => setSelectedImage(null)}
                         >
                             <button
-                                className="absolute top-8 right-8 text-white/50 hover:text-white transition-colors"
+                                className="absolute top-6 right-6 md:top-8 md:right-8 p-2 text-ivory/70 hover:text-ivory transition-colors"
                                 onClick={() => setSelectedImage(null)}
+                                aria-label="Close"
                             >
-                                <X size={40} strokeWidth={1} />
+                                <X size={36} strokeWidth={1.25} />
                             </button>
 
                             <motion.div
-                                initial={{ scale: 0.9, opacity: 0 }}
+                                initial={{ scale: 0.94, opacity: 0 }}
                                 animate={{ scale: 1, opacity: 1 }}
-                                exit={{ scale: 0.9, opacity: 0 }}
-                                className="relative max-w-5xl max-h-[85vh] w-full flex flex-col items-center"
+                                exit={{ scale: 0.94, opacity: 0 }}
+                                className="relative max-w-5xl max-h-[88vh] w-full flex flex-col items-center"
                                 onClick={(e) => e.stopPropagation()}
                             >
                                 <img
                                     src={selectedImage.src}
                                     alt={selectedImage.title}
-                                    className="max-h-[75vh] w-auto object-contain shadow-2xl rounded-2xl"
+                                    className="max-h-[75vh] w-auto object-contain"
                                 />
-                                <div className="mt-8 text-center space-y-2">
-                                    <h3 className="text-3xl font-serif italic text-white">{selectedImage.title}</h3>
-                                    <div className="flex items-center justify-center gap-4">
-                                        <span className="h-px w-8 bg-amber-600/50"></span>
-                                        <p className="text-[10px] tracking-[0.4em] uppercase text-amber-500">{selectedImage.category}</p>
-                                        <span className="h-px w-8 bg-amber-600/50"></span>
-                                    </div>
+                                <div className="mt-6 text-center">
+                                    <h3 className="text-4xl font-display font-light text-ivory">{selectedImage.title}</h3>
+                                    <p className="mt-1 text-brass-light">{selectedImage.category}</p>
                                 </div>
                             </motion.div>
                         </motion.div>
                     )}
                 </AnimatePresence>
             </div>
+            <Invitation />
         </PageTransition>
     );
 };
