@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import { PageTransition } from '../components/ui/PageTransition';
 import { Check, Layers, Ruler, Grid3X3, Mail } from 'lucide-react';
 import { Reveal } from '../components/ui/Reveal';
+import { PageHero } from '../components/ui/PageHero';
 import SEO from '../components/ui/SEO';
 
 // Using the Horizon image from assets
@@ -116,77 +116,56 @@ export const HorizonPage = () => {
                 description="Best artificial grass and PVC mat showroom in Ernakulam. Horizon Ventures (KMS Traders) provides UV resistant, pet-friendly turf and durable floor mats in Kerala."
             />
             <div className="min-h-screen text-ink">
-                {/* Hero */}
-                <div className="relative h-[88vh] min-h-[560px] overflow-hidden">
-                    <div className="absolute inset-0">
-                        <img
-                            src={horizonImg}
-                            alt="Horizon Ventures Artificial Grass and PVC Mat Showroom Kerala"
-                            className="w-full h-full object-cover"
-                            fetchPriority="high"
-                            decoding="async"
-                        />
-                        <div className="absolute inset-0 bg-ink/55" />
-                    </div>
-
-                    <div className="absolute inset-0 flex items-end">
-                        <div className="max-w-[1440px] w-full mx-auto px-6 md:px-12 pb-16 md:pb-24">
-                            <motion.h1
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ duration: 0.7 }}
-                                className="display-xl font-light max-w-5xl text-ivory"
-                            >
-                                Evergreen luxury.
-                            </motion.h1>
-                            <motion.p
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ duration: 0.7, delay: 0.1 }}
-                                className="mt-6 max-w-xl text-lg text-ivory/80 leading-relaxed"
-                            >
-                                Horizon Ventures: premium artificial grass and PVC mat solutions for modern spaces.
-                            </motion.p>
-                        </div>
-                    </div>
-                </div>
+                <PageHero
+                    eyebrow="Horizon Ventures"
+                    title={<>Evergreen <em className="italic text-oxblood">luxury.</em></>}
+                    lead="Premium artificial grass and PVC mat solutions for modern spaces."
+                    image={horizonImg}
+                    imageAlt="Horizon Ventures Artificial Grass and PVC Mat Showroom Kerala"
+                />
 
                 {/* Grass Products Section */}
-                <div className="py-24 md:py-40">
+                <div className="py-28 md:py-44">
                     <div className="max-w-[1440px] mx-auto px-6 md:px-12">
-                        <div className="grid md:grid-cols-12 gap-6 items-end mb-14 md:mb-20">
-                            <Reveal as="h2" className="md:col-span-7 display-lg font-light">Artificial grass</Reveal>
-                            <Reveal delay={0.1} className="md:col-span-4 md:col-start-9 text-lg text-ink/75 leading-relaxed">
+                        <div className="grid md:grid-cols-12 gap-6 items-end mb-16 md:mb-24">
+                            <div className="md:col-span-7">
+                                <Reveal as="p" className="eyebrow">The turf</Reveal>
+                                <Reveal as="h2" className="mt-6 md:mt-8 display-lg font-light">Artificial grass</Reveal>
+                            </div>
+                            <Reveal delay={0.1} className="md:col-span-4 md:col-start-9 text-[17px] text-ink/75 leading-relaxed">
                                 Four grades of premium turf, each engineered for a specific need and environment.
                             </Reveal>
                         </div>
 
-                        <div className="grid md:grid-cols-2 gap-4 md:gap-6">
+                        <div className="grid md:grid-cols-2 gap-x-8 gap-y-16 md:gap-x-10 md:gap-y-24">
                             {grassProducts.map((product, index) => (
-                                <Reveal key={product.id} delay={0.06 * index} className="group relative overflow-hidden bg-ink-soft">
-                                    <div className="relative h-[420px] md:h-[540px] overflow-hidden">
-                                        <img
-                                            src={product.image}
-                                            alt={`${product.name} - Premium Artificial Grass Kerala`}
-                                            className="w-full h-full object-cover"
-                                            loading="lazy"
-                                            decoding="async"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
+                                <Reveal key={product.id} delay={0.06 * index}>
+                                    <div className="frame relative">
+                                        <div className="relative aspect-[4/3] overflow-hidden">
+                                            <img
+                                                src={product.image}
+                                                alt={`${product.name} - Premium Artificial Grass Kerala`}
+                                                className="absolute inset-0 w-full h-full object-cover"
+                                                loading="lazy"
+                                                decoding="async"
+                                            />
+                                        </div>
                                         {'badge' in product && product.badge && (
-                                            <div className="absolute top-5 left-5 bg-brass text-ink px-4 py-1.5 text-sm font-medium">
+                                            <div className="absolute top-6 left-6 bg-[#fbf9f5] text-oxblood px-4 py-2 text-[11px] font-medium uppercase tracking-[0.2em]">
                                                 {product.badge}
                                             </div>
                                         )}
                                     </div>
-                                    <div className="absolute inset-0 flex flex-col justify-end p-7 md:p-10">
-                                        <h3 className="font-display font-light text-3xl md:text-4xl leading-tight mb-5">{product.name}</h3>
-                                        <div className="flex flex-wrap gap-x-6 gap-y-2 mb-5 text-ivory/90 text-sm">
-                                            <span className="flex items-center gap-2"><Ruler size={16} className="text-brass" />{product.height}</span>
-                                            <span className="flex items-center gap-2"><Layers size={16} className="text-brass" />{product.layers}</span>
-                                            <span className="flex items-center gap-2"><Grid3X3 size={16} className="text-brass" />{product.stitches}</span>
+                                    <div className="pt-7">
+                                        <p className="numeral text-xl">No. 0{index + 1}</p>
+                                        <div className="rule mt-4" />
+                                        <h3 className="mt-5 font-display font-light text-ink text-3xl md:text-[2.5rem] leading-tight">{product.name}</h3>
+                                        <div className="mt-5 flex flex-wrap gap-x-7 gap-y-2 text-[12px] font-medium uppercase tracking-[0.16em] text-ink/70">
+                                            <span className="flex items-center gap-2"><Ruler size={15} strokeWidth={1.5} className="text-brass-dark" />{product.height}</span>
+                                            <span className="flex items-center gap-2"><Layers size={15} strokeWidth={1.5} className="text-brass-dark" />{product.layers}</span>
+                                            <span className="flex items-center gap-2"><Grid3X3 size={15} strokeWidth={1.5} className="text-brass-dark" />{product.stitches}</span>
                                         </div>
-                                        <p className="text-ivory/75 leading-relaxed max-w-md">{product.description}</p>
+                                        <p className="mt-5 text-[17px] text-ink/75 leading-relaxed max-w-md">{product.description}</p>
                                     </div>
                                 </Reveal>
                             ))}
@@ -195,17 +174,18 @@ export const HorizonPage = () => {
                 </div>
 
                 {/* PVC Mats */}
-                <div className="floor floor-warm py-24 md:py-40">
+                <div className="floor floor-warm py-28 md:py-44">
                     <div className="max-w-[1440px] mx-auto px-6 md:px-12">
-                        <Reveal as="h2" className="display-md font-light max-w-3xl mb-14 md:mb-20">Mats built for doorways, decks and workshops</Reveal>
+                        <Reveal as="p" className="eyebrow">The mats</Reveal>
+                        <Reveal as="h2" className="mt-6 md:mt-8 display-md font-light max-w-3xl mb-14 md:mb-20">Mats built for doorways, decks and workshops</Reveal>
                         <div className="grid md:grid-cols-2 gap-4 md:gap-6">
-                            <Reveal className="bg-[#faf7f2] shadow-[0_26px_36px_-26px_rgba(60,45,30,0.5)]">
+                            <Reveal className="frame">
                                 <div className="relative h-[300px] overflow-hidden">
                                     <img src={cushionMatImg} alt="Durable Cushion Mats Kerala - Single Colour PVC" className="w-full h-full object-cover" loading="lazy" decoding="async" />
                                 </div>
                                 <div className="p-8 md:p-10">
                                     <h3 className="font-display font-light text-4xl">Cushion mats</h3>
-                                    <p className="text-oxblood mt-1 mb-7">Single colour · {singleColourMats.thickness.join(' or ')}</p>
+                                    <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-brass-dark mt-3 mb-7">Single colour · {singleColourMats.thickness.join(' or ')}</p>
                                     <ul className="flex flex-wrap gap-2">
                                         {singleColourMats.colors.map(color => (
                                             <li key={color} className="flex items-center gap-2 px-4 py-2 bg-[#ece5d8] text-sm">
@@ -217,13 +197,13 @@ export const HorizonPage = () => {
                                 </div>
                             </Reveal>
 
-                            <Reveal delay={0.1} className="bg-[#faf7f2] shadow-[0_26px_36px_-26px_rgba(60,45,30,0.5)]">
+                            <Reveal delay={0.1} className="frame">
                                 <div className="relative h-[300px] overflow-hidden">
                                     <img src={sMatImg} alt="S-Mats Ernakulam - Double Colour Drainage Mats" className="w-full h-full object-cover" loading="lazy" decoding="async" />
                                 </div>
                                 <div className="p-8 md:p-10">
                                     <h3 className="font-display font-light text-4xl">S mats</h3>
-                                    <p className="text-oxblood mt-1 mb-7">Double colour · {doubleColourMats.thickness}</p>
+                                    <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-brass-dark mt-3 mb-7">Double colour · {doubleColourMats.thickness}</p>
                                     <ul className="flex flex-wrap gap-2">
                                         {doubleColourMats.colors.map(combo => (
                                             <li key={combo} className="px-4 py-2 bg-[#ece5d8] text-sm">{combo}</li>
@@ -236,13 +216,16 @@ export const HorizonPage = () => {
                 </div>
 
                 {/* Consultation */}
-                <div className="py-24 md:py-40">
+                <div className="py-28 md:py-44">
                     <div className="max-w-[1440px] mx-auto px-6 md:px-12 grid md:grid-cols-12 gap-14 md:gap-8 items-start">
                         <div className="md:col-span-6 space-y-10">
-                            <Reveal as="h2" className="display-md font-light">Beyond nature</Reveal>
-                            <ul className="space-y-4">
+                            <div>
+                                <Reveal as="p" className="eyebrow">Why Horizon</Reveal>
+                                <Reveal as="h2" className="mt-6 md:mt-8 display-md font-light">Beyond <em className="italic text-oxblood">nature</em></Reveal>
+                            </div>
+                            <ul>
                                 {features.map((feature) => (
-                                    <li key={feature} className="flex items-center gap-4 text-xl font-display">
+                                    <li key={feature} className="flex items-center gap-5 text-2xl font-display border-t border-ink/20 py-5 last:border-b">
                                         <Check size={18} className="text-oxblood shrink-0" />
                                         {feature}
                                     </li>
@@ -250,7 +233,8 @@ export const HorizonPage = () => {
                             </ul>
                         </div>
                         <Reveal delay={0.1} className="md:col-span-5 md:col-start-8 rug p-12 md:p-16 my-5 space-y-6">
-                            <h3 className="font-display font-light text-4xl">Request a consultation</h3>
+                            <p className="eyebrow">Consultation</p>
+                            <h3 className="font-display italic font-light text-4xl md:text-[2.75rem] leading-none text-brass-light">Request a consultation</h3>
                             <div className="space-y-4">
                                 <div>
                                     <label htmlFor="hz-name" className="block text-sm text-ivory/70 mb-2">Name *</label>

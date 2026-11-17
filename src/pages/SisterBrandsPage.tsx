@@ -22,6 +22,7 @@ export const SisterBrandsPage = () => {
                 description="KMS Traders (Muvattupuzha) is the parent organization of Carpetologist, Horizon Ventures, and KMS Carpets. Expert flooring and landscaping solutions in Ernakulam."
             />
             <PageHero
+                eyebrow="The KMS Traders group"
                 title="Three brands, one ground."
                 lead="Carpetologist, Horizon Ventures and KMS Carpets share a single promise: beautiful, durable surfaces for every space, indoors and out."
                 image={heroImg}
@@ -29,7 +30,7 @@ export const SisterBrandsPage = () => {
             />
             <SisterOrganizations hideHeader />
 
-            <section className="floor floor-warm text-ink py-24 md:py-40">
+            <section className="floor floor-warm text-ink py-28 md:py-44">
                 <div className="max-w-[1440px] mx-auto px-6 md:px-12 grid md:grid-cols-12 gap-14 md:gap-8 items-center">
                     <div className="md:col-span-5">
                         <Reveal as="h2" className="display-md font-light">Integrated living</Reveal>

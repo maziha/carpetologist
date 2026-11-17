@@ -44,29 +44,36 @@
 }
 
 @layer components {
-  /* The floor: polished marble tiles with soft veining and fine grout lines. */
+  /* The floor: large honed marble tiles, each with a brass and oxblood cabochon inlaid at the corners. */
   .floor {
-    background-color: #f3efe8;
+    background-color: #f4f0e8;
     background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='340' height='340'%3E%3Cpath d='M170 0V340M0 170H340' stroke='%237d6a4e' stroke-opacity='.2'/%3E%3Cpath d='M171 0V340M0 171H340' stroke='%23fff' stroke-opacity='.75'/%3E%3Crect x='163' y='163' width='14' height='14' transform='rotate(45 170 170)' fill='%23f6f2ea'/%3E%3Crect x='165' y='165' width='10' height='10' transform='rotate(45 170 170)' fill='%23b8935a' fill-opacity='.6'/%3E%3Crect x='168' y='168' width='4' height='4' transform='rotate(45 170 170)' fill='%236e141c' fill-opacity='.5'/%3E%3C/svg%3E"),
       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='720' height='720'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.0035 0.008' numOctaves='5' seed='23' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.45 0 0 0 0 0.4 0 0 0 0 0.35 0 0 0 -3 0.11'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E"),
-      linear-gradient(to right, transparent calc(100% - 2px), rgba(130, 110, 85, 0.18) calc(100% - 2px), rgba(130, 110, 85, 0.18) calc(100% - 1px), rgba(255, 255, 255, 0.8) calc(100% - 1px)),
-      linear-gradient(to bottom, transparent calc(100% - 2px), rgba(130, 110, 85, 0.18) calc(100% - 2px), rgba(130, 110, 85, 0.18) calc(100% - 1px), rgba(255, 255, 255, 0.8) calc(100% - 1px)),
-      linear-gradient(115deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 38%, rgba(255, 255, 255, 0.35) 62%, rgba(255, 255, 255, 0) 100%);
-    background-size: 720px 720px, 360px 360px, 360px 360px, 360px 360px;
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='680' height='680'%3E%3Crect x='170' y='170' width='340' height='340' fill='%23826a48' fill-opacity='.028'/%3E%3Cpath d='M0 0h170v170H0zM510 0h170v170H510zM0 510h170v170H0zM510 510h170v170H510z' fill='%23fff' fill-opacity='.22'/%3E%3C/svg%3E"),
+      linear-gradient(115deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 38%, rgba(255, 255, 255, 0.3) 62%, rgba(255, 255, 255, 0) 100%);
+    background-size: 340px 340px, 720px 720px, 680px 680px, 1360px 1360px;
   }
-  .floor-warm { background-color: #ebe3d4; }
+  .floor-warm { background-color: #ece5d7; }
+  /* A warmer room inside the page keeps the same tiles running through it. */
+  .floor .floor { background-image: none; background-color: rgba(190, 165, 120, 0.13); }
 
-  /* A rug laid on the floor: woven border, brass keyline, knotted fringe top and bottom. */
+  /* A rug laid on the floor: woven field, guard borders, brass keyline, knotted fringe top and bottom. */
   .rug {
     position: relative;
-    background: #6e141c;
+    background-color: #651219;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.09) 0 1px, transparent 1px 3px),
+      repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.03) 0 1px, transparent 1px 3px),
+      radial-gradient(120% 90% at 50% 0%, rgba(160, 50, 55, 0.35), transparent 60%);
     color: #f5eee2;
     box-shadow:
-      0 36px 50px -28px rgba(50, 20, 15, 0.55),
-      inset 0 0 0 10px #6e141c,
-      inset 0 0 0 12px #c19a5b,
-      inset 0 0 0 22px #6e141c,
-      inset 0 0 0 23px rgba(245, 238, 226, 0.55);
+      0 2px 3px rgba(50, 20, 15, 0.25),
+      0 40px 56px -30px rgba(50, 20, 15, 0.6),
+      inset 0 0 0 9px #561016,
+      inset 0 0 0 10px #c19a5b,
+      inset 0 0 0 19px #651219,
+      inset 0 0 0 20px rgba(220, 192, 138, 0.5);
   }
   .rug::before,
   .rug::after {
@@ -74,11 +81,12 @@
     position: absolute;
     left: 0;
     right: 0;
-    height: 18px;
-    background: repeating-linear-gradient(90deg, #e9d3a0 0 2px, #a98443 2px 3px, #f3e4bd 3px 5px, transparent 5px 7px);
+    height: 16px;
+    background: repeating-linear-gradient(90deg, #e9d9b4 0 1px, #b39562 1px 2px, #f3e8cd 2px 3px, transparent 3px 5px);
+    filter: drop-shadow(0 3px 2px rgba(50, 30, 15, 0.25));
   }
-  .rug::before { top: -18px; -webkit-mask-image: linear-gradient(0deg, #000 30%, transparent); mask-image: linear-gradient(0deg, #000 30%, transparent); }
-  .rug::after { bottom: -18px; -webkit-mask-image: linear-gradient(180deg, #000 30%, transparent); mask-image: linear-gradient(180deg, #000 30%, transparent); }
+  .rug::before { top: -16px; -webkit-mask-image: linear-gradient(0deg, #000 35%, transparent); mask-image: linear-gradient(0deg, #000 35%, transparent); }
+  .rug::after { bottom: -16px; -webkit-mask-image: linear-gradient(180deg, #000 35%, transparent); mask-image: linear-gradient(180deg, #000 35%, transparent); }
 
   /* The skirting board where floor meets wall. */
   .skirting {
@@ -86,19 +94,62 @@
     box-shadow: 0 -1px 0 rgba(110, 95, 75, 0.25), 0 10px 14px -8px rgba(60, 45, 30, 0.25) inset;
   }
 
+  /* A photograph hung in a pale mount. */
+  .frame {
+    background: #fbf9f5;
+    padding: 10px;
+    box-shadow: 0 1px 2px rgba(60, 45, 30, 0.18), 0 34px 48px -30px rgba(60, 45, 30, 0.6);
+  }
+
+  /* Small tracked label that opens a section. */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: #8f6c34;
+  }
+  .eyebrow::before { content: ''; width: 34px; height: 1px; background: currentColor; }
+  .eyebrow-plain::before { display: none; }
+  .rug .eyebrow { color: #dcc08a; }
+
+  .rule { height: 1px; background: rgba(60, 45, 30, 0.2); }
+
+  .numeral {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-weight: 300;
+    color: #8f6c34;
+  }
+
   .display-xl { font-size: clamp(3.5rem, 11vw, 11rem); line-height: 0.88; letter-spacing: -0.035em; }
-  .display-lg { font-size: clamp(2.75rem, 7.5vw, 7rem); line-height: 0.92; letter-spacing: -0.03em; }
-  .display-md { font-size: clamp(2.25rem, 4.6vw, 4.5rem); line-height: 0.98; letter-spacing: -0.02em; }
+  .display-lg { font-size: clamp(2.75rem, 6.6vw, 6.4rem); line-height: 0.94; letter-spacing: -0.028em; }
+  .display-md { font-size: clamp(2.25rem, 4.4vw, 4.25rem); line-height: 1; letter-spacing: -0.02em; }
 
   .btn {
-    @apply inline-flex items-center justify-center gap-3 px-9 py-4 text-sm font-medium tracking-wide transition-all duration-500 ease-out;
+    @apply inline-flex items-center justify-center gap-3 px-8 py-[17px] text-[12px] font-medium uppercase transition-all duration-500 ease-out;
+    letter-spacing: 0.18em;
   }
   .btn-brass { @apply bg-brass text-ink hover:bg-brass-light; }
   .btn-ivory { @apply bg-ivory text-ink hover:bg-brass-light; }
   .btn-ink { @apply bg-ink text-ivory hover:bg-oxblood; }
-  .btn-oxblood { @apply bg-oxblood text-ivory hover:bg-oxblood-bright; }
-  .btn-ghost-light { @apply bg-white/5 text-ivory hover:bg-ivory hover:text-ink; }
-  .btn-ghost-dark { @apply bg-ink/5 text-ink hover:bg-ink hover:text-ivory; }
+  .btn-oxblood { @apply bg-oxblood text-ivory hover:bg-oxblood-bright; box-shadow: 0 16px 24px -16px rgba(110, 20, 28, 0.7); }
+  .btn-ghost-light { @apply text-ivory hover:bg-ivory hover:text-ink; box-shadow: inset 0 0 0 1px rgba(245, 238, 226, 0.45); }
+  .btn-ghost-dark { @apply text-ink hover:bg-ink hover:text-ivory; box-shadow: inset 0 0 0 1px rgba(17, 11, 9, 0.35); }
+
+  /* Text link with a line that draws under it. */
+  .link-line {
+    @apply inline-flex items-center gap-3 text-[12px] font-medium uppercase text-oxblood;
+    letter-spacing: 0.18em;
+    padding-bottom: 6px;
+    background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1px no-repeat;
+    transition: gap 0.4s ease, color 0.3s ease;
+  }
+  .link-line:hover, .group:hover .link-line { gap: 20px; }
 }
 
 @layer components {

@@ -2,6 +2,7 @@ import { Hero } from '../components/Hero';
 import { About } from '../components/About';
 import { Collections } from '../components/Collections';
 import { Showroom } from '../components/Showroom';
+import { Process } from '../components/Process';
 import { Invitation } from '../components/Invitation';
 import { PageTransition } from '../components/ui/PageTransition';
 import SEO from '../components/ui/SEO';
@@ -17,6 +18,7 @@ export const Home = () => {
             <About />
             <Collections />
             <Showroom />
+            <Process />
             <Invitation />
         </PageTransition>
     );

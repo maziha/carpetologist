@@ -27,7 +27,7 @@ export const Footer = () => {
           </div>
 
           <div className="md:col-span-2 md:col-start-7">
-            <h4 className="font-display text-2xl text-oxblood mb-6">Collections</h4>
+            <h4 className="eyebrow eyebrow-plain mb-7" style={{ fontFamily: 'Inter, sans-serif' }}>Collections</h4>
             <ul className="space-y-3">
               <li><Link to="/collections" className={linkClass}>Turkish heritage</Link></li>
               <li><Link to="/collections" className={linkClass}>Artisan weaves</Link></li>
@@ -37,7 +37,7 @@ export const Footer = () => {
           </div>
 
           <div className="md:col-span-2">
-            <h4 className="font-display text-2xl text-oxblood mb-6">The group</h4>
+            <h4 className="eyebrow eyebrow-plain mb-7" style={{ fontFamily: 'Inter, sans-serif' }}>The group</h4>
             <ul className="space-y-3">
               <li><Link to="/horizon" className={linkClass}>Horizon Ventures</Link></li>
               <li><Link to="/kms" className={linkClass}>KMS Carpets</Link></li>
@@ -47,7 +47,7 @@ export const Footer = () => {
           </div>
 
           <div className="md:col-span-2">
-            <h4 className="font-display text-2xl text-oxblood mb-6">Visit</h4>
+            <h4 className="eyebrow eyebrow-plain mb-7" style={{ fontFamily: 'Inter, sans-serif' }}>Visit</h4>
             <ul className="space-y-3">
               <li><a href="mailto:kmstraders25@gmail.com" className={linkClass}>kmstraders25@gmail.com</a></li>
               <li><a href="tel:+917558077632" className={linkClass}>+91 75580 77632</a></li>

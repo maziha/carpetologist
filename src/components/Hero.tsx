@@ -43,11 +43,24 @@ export const Hero = () => {
     <section className="relative min-h-[100dvh] overflow-hidden">
       {/* a runner laid along the floor, rolling out from the right */}
       <div className="absolute inset-x-6 md:inset-x-12 bottom-10 md:bottom-14 h-[72px] md:h-[104px]">
-        <motion.div
-          aria-hidden
-          className="rug absolute inset-0"
-          style={{ clipPath: clip }}
-        />
+        <motion.div className="rug absolute inset-0 flex items-center justify-between gap-6 px-9 md:px-14" style={{ clipPath: clip }}>
+          <motion.p
+            initial={reduce ? false : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: reduce ? 0 : 3.9 }}
+            className="font-display italic font-light text-brass-light text-[17px] md:text-[26px] leading-none whitespace-nowrap"
+          >
+            Turkish <span className="not-italic text-brass/70 mx-1 md:mx-3">&middot;</span> Persian <span className="not-italic text-brass/70 mx-1 md:mx-3">&middot;</span> Indian <span className="not-italic text-brass/70 mx-1 md:mx-3">&middot;</span> Designer
+          </motion.p>
+          <motion.p
+            initial={reduce ? false : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: reduce ? 0 : 4.1 }}
+            className="hidden lg:block text-[11px] font-medium uppercase tracking-[0.26em] text-ivory/80 whitespace-nowrap"
+          >
+            Showroom by appointment &nbsp;&mdash;&nbsp; Muvattupuzha, Kerala
+          </motion.p>
+        </motion.div>
         <motion.div
           aria-hidden
           className="absolute top-0 bottom-0 z-[1]"
@@ -65,14 +78,22 @@ export const Hero = () => {
       <MagicDust followRef={carpetRef} off={dustOff} />
 
       <div className="relative z-[2] max-w-[1440px] mx-auto min-h-[100dvh] px-6 md:px-12 pt-28 pb-40 md:pt-24 md:pb-36 grid md:grid-cols-12 items-center gap-8 md:gap-6">
-        <div className="md:col-span-6 order-2 md:order-1">
+        <div className="md:col-span-7 order-2 md:order-1">
+          <motion.p
+            initial={reduce ? false : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.9, delay: reduce ? 0 : 3.1 }}
+            className="eyebrow"
+          >
+            Carpet studio &middot; Kerala
+          </motion.p>
           <motion.h1
             initial={reduce ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.9, delay: reduce ? 0 : 3.3 }}
-            className="display-lg text-ink font-light"
+            className="mt-6 md:mt-8 display-lg text-ink font-light"
           >
-            Carpets made to be inherited.
+            Carpets made to be <em className="italic text-oxblood">inherited.</em>
           </motion.h1>
           <motion.div
             initial={reduce ? false : { opacity: 0 }}
@@ -82,14 +103,14 @@ export const Hero = () => {
             <p className="mt-6 md:mt-8 max-w-md text-base md:text-lg text-ink/75 font-light leading-relaxed">
               Turkish, Persian and designer rugs, chosen knot by knot and shown under museum light in Muvattupuzha.
             </p>
-            <div className="mt-8 md:mt-10 flex flex-wrap gap-3">
+            <div className="mt-8 md:mt-10 flex flex-wrap items-center gap-x-8 gap-y-5">
               <Link to="/collections" className="btn btn-oxblood">Explore the collection</Link>
-              <Link to="/contact" className="btn btn-ghost-dark">Book a private viewing</Link>
+              <Link to="/contact" className="link-line">Book a private viewing <span aria-hidden>&rarr;</span></Link>
             </div>
           </motion.div>
         </div>
 
-        <div className="md:col-span-6 order-1 md:order-2 flex justify-center md:justify-end">
+        <div className="md:col-span-5 order-1 md:order-2 flex justify-center md:justify-end">
           <motion.div
             initial={reduce ? false : { opacity: 0, scale: 0.07, x: '38vw', y: '-42vh', rotateZ: 24, rotateX: 74, rotateY: -70 }}
             animate={{
@@ -102,7 +123,7 @@ export const Hero = () => {
               rotateX: [74, 52, 40, 14, 0],
             }}
             transition={{ duration: reduce ? 0 : 3.2, times: [0, 0.22, 0.5, 0.76, 1], ease: 'easeInOut' }}
-            className="relative w-[46vw] max-w-[240px] md:w-auto md:max-w-none md:h-[48vh] md:mr-10"
+            className="relative w-[46vw] max-w-[240px] md:w-auto md:max-w-none md:h-[52vh] md:mr-10"
             style={{ aspectRatio: '828 / 1175', transformPerspective: 1600 }}
           >
             <div aria-hidden className="absolute left-[8%] right-[8%] -bottom-[5%] h-[6%] rounded-[50%] bg-[#3a2a1c]/45 blur-2xl" />

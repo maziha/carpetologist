@@ -88,31 +88,38 @@ export const GalleryPage = () => {
             />
             <div className="min-h-screen pt-36 md:pt-44 pb-24 md:pb-40">
                 <div className="max-w-[1440px] mx-auto px-6 md:px-12">
-                    <div className="grid md:grid-cols-12 gap-8 items-end mb-12 md:mb-16">
-                        <h1 className="md:col-span-8 display-lg font-light text-ink">The curated gallery</h1>
-                        <p className="md:col-span-4 text-lg text-ink/75 leading-relaxed">
+                    <div className="grid md:grid-cols-12 gap-8 items-end mb-14 md:mb-20">
+                        <div className="md:col-span-8">
+                            <p className="eyebrow">The gallery</p>
+                            <h1 className="mt-6 md:mt-8 display-lg font-light text-ink">Every piece, <em className="italic text-oxblood">in a room</em></h1>
+                        </div>
+                        <p className="md:col-span-4 text-[17px] text-ink/75 leading-relaxed">
                             {GALLERY_IMAGES.length} carpets shown in real rooms. Filter by tradition and tap any piece to see it larger.
                         </p>
                     </div>
 
-                    <div className="flex flex-wrap gap-2 md:gap-3 mb-12 md:mb-16" role="tablist" aria-label="Filter by tradition">
-                        {CATEGORIES.map((cat) => (
-                            <button
-                                key={cat}
-                                role="tab"
-                                aria-selected={activeCategory === cat}
-                                onClick={() => setActiveCategory(cat)}
-                                className={`px-6 py-2.5 text-sm transition-colors duration-500 ${activeCategory === cat
-                                    ? 'bg-oxblood text-ivory'
-                                    : 'bg-[#faf7f2] text-ink/70 hover:text-ink shadow-[0_10px_18px_-14px_rgba(60,45,30,0.5)]'
-                                    }`}
-                            >
-                                {cat}
-                            </button>
-                        ))}
+                    <div className="flex flex-wrap gap-x-8 gap-y-3 md:gap-x-12 border-b border-ink/20 mb-12 md:mb-16" role="tablist" aria-label="Filter by tradition">
+                        {CATEGORIES.map((cat) => {
+                            const count = cat === 'All' ? GALLERY_IMAGES.length : GALLERY_IMAGES.filter((img) => img.category === cat).length;
+                            const active = activeCategory === cat;
+                            return (
+                                <button
+                                    key={cat}
+                                    role="tab"
+                                    aria-selected={active}
+                                    onClick={() => setActiveCategory(cat)}
+                                    className={`relative -mb-px pb-4 text-[12px] font-medium uppercase tracking-[0.18em] border-b-2 transition-colors duration-500 ${active
+                                        ? 'text-oxblood border-oxblood'
+                                        : 'text-ink/60 border-transparent hover:text-ink'
+                                        }`}
+                                >
+                                    {cat} <span className="numeral normal-case tracking-normal text-base ml-1">{count}</span>
+                                </button>
+                            );
+                        })}
                     </div>
 
-                    <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 md:gap-6">
+                    <div className="columns-1 sm:columns-2 lg:columns-3 gap-5 md:gap-8">
                         <AnimatePresence>
                             {filteredImages.map((image) => (
                                 <motion.button
@@ -122,22 +129,24 @@ export const GalleryPage = () => {
                                     exit={{ opacity: 0 }}
                                     transition={{ duration: 0.3 }}
                                     key={image.id}
-                                    className="break-inside-avoid relative group block w-full text-left mb-4 md:mb-6"
+                                    className="break-inside-avoid group block w-full text-left mb-10 md:mb-14"
                                     onClick={() => setSelectedImage(image)}
                                     aria-label={`View ${image.title}`}
                                 >
-                                    <div className="relative overflow-hidden bg-[#faf7f2]">
-                                        <img
-                                            src={image.src}
-                                            alt={`${image.title}, a ${image.category.toLowerCase()} carpet`}
-                                            loading="lazy"
-                                            decoding="async"
-                                            className="w-full h-auto block transition-transform duration-[1.5s] ease-out "
-                                        />
-                                        <div className="absolute inset-x-0 bottom-0 p-5 pt-16 bg-gradient-to-t from-ink/90 to-transparent translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 transition-all duration-500">
-                                            <p className="font-display text-2xl text-ivory leading-none">{image.title}</p>
-                                            <p className="mt-1 text-sm text-brass-light">{image.category}</p>
+                                    <div className="frame">
+                                        <div className="relative overflow-hidden">
+                                            <img
+                                                src={image.src}
+                                                alt={`${image.title}, a ${image.category.toLowerCase()} carpet`}
+                                                loading="lazy"
+                                                decoding="async"
+                                                className="w-full h-auto block transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]"
+                                            />
                                         </div>
+                                    </div>
+                                    <div className="mt-5 flex items-baseline justify-between gap-4">
+                                        <p className="font-display text-2xl md:text-[1.7rem] text-ink leading-none group-hover:text-oxblood transition-colors duration-500">{image.title}</p>
+                                        <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-brass-dark shrink-0">{image.category}</p>
                                     </div>
                                 </motion.button>
                             ))}
@@ -154,32 +163,34 @@ export const GalleryPage = () => {
                             role="dialog"
                             aria-modal="true"
                             aria-label={selectedImage.title}
-                            className="fixed inset-0 z-[1001] bg-ink/95 flex items-center justify-center p-6 md:p-12"
+                            className="fixed inset-0 z-[1001] bg-[#f4f0e8]/[0.97] backdrop-blur-sm flex items-center justify-center p-6 md:p-12"
                             onClick={() => setSelectedImage(null)}
                         >
                             <button
-                                className="absolute top-6 right-6 md:top-8 md:right-8 p-2 text-ivory/70 hover:text-ivory transition-colors"
+                                className="absolute top-6 right-6 md:top-8 md:right-8 p-2 text-ink/60 hover:text-oxblood transition-colors"
                                 onClick={() => setSelectedImage(null)}
                                 aria-label="Close"
                             >
-                                <X size={36} strokeWidth={1.25} />
+                                <X size={34} strokeWidth={1} />
                             </button>
 
                             <motion.div
-                                initial={{ scale: 0.94, opacity: 0 }}
+                                initial={{ scale: 0.97, opacity: 0 }}
                                 animate={{ scale: 1, opacity: 1 }}
-                                exit={{ scale: 0.94, opacity: 0 }}
-                                className="relative max-w-5xl max-h-[88vh] w-full flex flex-col items-center"
+                                exit={{ scale: 0.97, opacity: 0 }}
+                                className="relative max-w-5xl max-h-[90vh] w-full flex flex-col items-center"
                                 onClick={(e) => e.stopPropagation()}
                             >
-                                <img
-                                    src={selectedImage.src}
-                                    alt={selectedImage.title}
-                                    className="max-h-[75vh] w-auto object-contain"
-                                />
-                                <div className="mt-6 text-center">
-                                    <h3 className="text-4xl font-display font-light text-ivory">{selectedImage.title}</h3>
-                                    <p className="mt-1 text-brass-light">{selectedImage.category}</p>
+                                <div className="frame">
+                                    <img
+                                        src={selectedImage.src}
+                                        alt={selectedImage.title}
+                                        className="max-h-[70vh] w-auto object-contain block"
+                                    />
+                                </div>
+                                <div className="mt-7 text-center">
+                                    <p className="eyebrow eyebrow-plain">{selectedImage.category}</p>
+                                    <h3 className="mt-3 text-4xl md:text-5xl font-display font-light text-ink">{selectedImage.title}</h3>
                                 </div>
                             </motion.div>
                         </motion.div>

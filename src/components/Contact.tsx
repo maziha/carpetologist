@@ -11,8 +11,8 @@ const BUSINESS_EMAIL = 'kmstraders25@gmail.com';
 const WHATSAPP_NUMBER = '917558077632'; // Format: country code + number, no +
 
 const fieldClass =
-  'w-full bg-[#ece5d8] px-4 py-3.5 text-ink placeholder:text-ink/40 focus:outline-none focus:bg-white focus:ring-2 focus:ring-brass transition-colors';
-const labelClass = 'block text-sm text-ink/70 mb-2';
+  'w-full bg-transparent border-0 border-b border-ink/30 px-0 py-3 text-lg text-ink placeholder:text-ink/35 focus:outline-none focus:border-oxblood transition-colors';
+const labelClass = 'block text-[11px] font-medium uppercase tracking-[0.22em] text-ink/65 mb-1';
 
 export const Contact = ({ hideHeader = false }: ContactProps) => {
   const [formData, setFormData] = useState({
@@ -69,11 +69,12 @@ Sent from carpetologist.com contact form
   ];
 
   return (
-    <section id="contact" className="relative pt-36 md:pt-44 pb-24 md:pb-40">
+    <section id="contact" className="relative pt-36 md:pt-44 pb-28 md:pb-44">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12">
         {!hideHeader && (
           <div className="mb-16 md:mb-24 max-w-4xl">
-            <h1 className="display-lg font-light text-ink">Let&rsquo;s find the carpet for your floor.</h1>
+            <p className="eyebrow">Contact</p>
+            <h1 className="mt-6 md:mt-8 display-lg font-light text-ink">Let&rsquo;s find the carpet for <em className="italic text-oxblood">your floor.</em></h1>
             <p className="mt-8 text-lg text-ink/75 max-w-xl leading-relaxed">
               Interested in a collection, a custom size or a visit to the showroom? Tell us a little and we will reply personally.
             </p>
@@ -81,10 +82,11 @@ Sent from carpetologist.com contact form
         )}
 
         <div className="grid md:grid-cols-12 gap-14 md:gap-10">
-          <Reveal className="md:col-span-7 bg-[#faf7f2] text-ink p-6 md:p-12 shadow-[0_30px_44px_-28px_rgba(60,45,30,0.5)]">
-            <h2 className="font-display text-4xl font-light mb-8">Send an enquiry</h2>
-            <div className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
+          <Reveal className="md:col-span-7 bg-[#fbf9f5] text-ink p-7 md:p-14 shadow-[0_1px_2px_rgba(60,45,30,0.18),0_34px_48px_-30px_rgba(60,45,30,0.6)]">
+            <p className="eyebrow">Enquiry</p>
+            <h2 className="mt-5 font-display text-4xl md:text-5xl font-light mb-10">Send an enquiry</h2>
+            <div className="space-y-8">
+              <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <label htmlFor="name" className={labelClass}>Full name *</label>
                   <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required autoComplete="name" className={fieldClass} />
@@ -95,7 +97,7 @@ Sent from carpetologist.com contact form
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <label htmlFor="phone" className={labelClass}>Phone number</label>
                   <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} autoComplete="tel" className={fieldClass} />
@@ -134,20 +136,21 @@ Sent from carpetologist.com contact form
           </Reveal>
 
           <Reveal delay={0.15} className="md:col-span-5 space-y-10">
-            <h2 className="font-display text-4xl md:text-5xl font-light text-ink">Visit the atelier</h2>
-            <ul className="space-y-8">
+            <div><p className="eyebrow">The showroom</p>
+            <h2 className="mt-5 font-display text-4xl md:text-5xl font-light text-ink">Visit the atelier</h2></div>
+            <ul>
               {details.map(({ Icon, label, value }) => (
-                <li key={label} className="flex items-start gap-5">
+                <li key={label} className="flex items-start gap-5 border-t border-ink/20 py-6 last:border-b">
                   <Icon className="w-5 h-5 mt-1 text-oxblood shrink-0" strokeWidth={1.5} />
                   <div>
-                    <p className="text-sm text-oxblood">{label}</p>
-                    <p className="mt-1 text-lg text-ink/85 leading-relaxed">{value}</p>
+                    <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-brass-dark">{label}</p>
+                    <p className="mt-2 font-display text-2xl text-ink leading-snug">{value}</p>
                   </div>
                 </li>
               ))}
             </ul>
 
-            <div className="h-72 md:h-80 w-full overflow-hidden bg-[#faf7f2]">
+            <div className="frame h-72 md:h-80 w-full overflow-hidden">
               <iframe
                 title="Carpetologist showroom on Google Maps"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15717.334860997988!2d76.5702279557532!3d9.989268241847988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b07e7005d68f86b%3A0xb80a03309c1f26b3!2sCarpetologist!5e0!3m2!1sen!2sin!4v1769933453667!5m2!1sen!2sin"

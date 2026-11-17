@@ -21,6 +21,7 @@ export const CollectionsPage = () => {
                 description="Explore our exclusive collection of hand-knotted Turkish, Persian, and Silk carpets. Premium quality rugs available at Carpetologist, Muvattupuzha."
             />
             <PageHero
+                eyebrow="The collection"
                 title="The collection"
                 lead="Four weaving traditions, curated by hand and held in our Muvattupuzha showroom. Pick one to explore."
                 image={heroImg}
@@ -28,14 +29,17 @@ export const CollectionsPage = () => {
             />
             <CollectionsSection hideHeader />
 
-            <section className="floor floor-warm text-ink py-24 md:py-40">
+            <section className="floor floor-warm text-ink py-28 md:py-44">
                 <div className="max-w-[1440px] mx-auto px-6 md:px-12">
-                    <Reveal as="h2" className="display-md font-light max-w-3xl">How we look after you and your carpet</Reveal>
-                    <div className="mt-16 md:mt-24 space-y-14 md:space-y-20">
+                    <Reveal as="p" className="eyebrow">The service</Reveal>
+                    <Reveal as="h2" className="mt-6 md:mt-8 display-md font-light max-w-3xl">How we look after you and your carpet</Reveal>
+                    <div className="mt-16 md:mt-24 grid md:grid-cols-3 gap-12 md:gap-10">
                         {promises.map((p, i) => (
-                            <Reveal key={p.title} delay={0.05 * i} className="grid md:grid-cols-12 gap-4 md:gap-8 items-baseline">
-                                <h3 className="md:col-span-6 font-display italic font-light text-oxblood text-[clamp(2.25rem,5vw,4.5rem)] leading-none">{p.title}</h3>
-                                <p className="md:col-span-5 md:col-start-8 text-lg text-ink/80 leading-relaxed">{p.text}</p>
+                            <Reveal key={p.title} delay={0.05 * i}>
+                                <div className="rule" />
+                                <p className="numeral mt-7 text-3xl">{['i.', 'ii.', 'iii.'][i]}</p>
+                                <h3 className="mt-5 font-display font-light text-ink text-4xl md:text-[2.6rem] leading-none">{p.title}</h3>
+                                <p className="mt-5 text-[17px] text-ink/75 leading-relaxed">{p.text}</p>
                             </Reveal>
                         ))}
                     </div>
